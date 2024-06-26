@@ -18,13 +18,10 @@ namespace Dimasyechka.Code.Mine
         [SerializeField]
         private BlockDurabilityVisuals _blockDurabilityVisuals;
 
-
-
         public void SetCallback(Action<MineableItemViewModel> callback)
         {
             _callback = callback;
         }
-
 
         protected override void OnSetupModel()
         {

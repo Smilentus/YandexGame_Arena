@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 5967088847463697235}
   - component: {fileID: 4008963655990060094}
   m_Layer: 5
-  m_Name: BoosterViewModel
+  m_Name: RandomizableBoosterViewModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

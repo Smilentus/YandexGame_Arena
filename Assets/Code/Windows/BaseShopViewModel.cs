@@ -2,12 +2,20 @@ using Dimasyechka.Code.Utilities;
 using Dimasyechka.Lubribrary.RxMV.Core;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
 using UniRx;
+using UnityEngine;
 using Zenject;
 
 namespace Dimasyechka.Code.Windows
 {
     public class BaseShopViewModel<T> : MonoViewModel<T>
     {
+        [SerializeField]
+        private bool _blockUserController = true;
+
+        [SerializeField]
+        private bool _registerCursor = true;
+        
+
         [RxAdaptableProperty]
         public ReactiveProperty<bool> IsVisible = new ReactiveProperty<bool>();
 
@@ -23,31 +31,34 @@ namespace Dimasyechka.Code.Windows
 
 
         [RxAdaptableMethod]
-        public void Show()
+        public virtual void Show()
         {
             IsVisible.Value = true;
 
             OnDrawUI();
 
-            _playerBlocker.BlockPlayer();
+            if (_blockUserController)
+                _playerBlocker.BlockPlayer();
 
-            CursorController.Instance.RegisterCursorController(this.name);
+            if (_registerCursor)
+                CursorController.Instance.RegisterCursorController(this.name);
 
             OnShow();
         }
 
         [RxAdaptableMethod]
-        public void Hide()
+        public virtual void Hide()
         {
             IsVisible.Value = false;
 
-            _playerBlocker.UnBlockPlayer();
+            if (_blockUserController) 
+                _playerBlocker.UnBlockPlayer();
 
-            CursorController.Instance.UnRegisterCursorController(this.name);
+            if (_registerCursor)
+                CursorController.Instance.UnRegisterCursorController(this.name);
 
             OnHide();
         }
-
 
 
         public virtual void OnShow() { }

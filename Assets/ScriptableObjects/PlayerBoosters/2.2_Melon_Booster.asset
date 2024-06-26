@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70efebccdf235db449925ea48bcdd412, type: 3}
-  m_Name: 2.2Melon_Booster
+  m_Name: 2.2_Melon_Booster
   m_EditorClassIdentifier: 
   <Guid>k__BackingField: melon_booster
   <Title>k__BackingField: "\u0410\u0440\u0431\u0443\u0437"

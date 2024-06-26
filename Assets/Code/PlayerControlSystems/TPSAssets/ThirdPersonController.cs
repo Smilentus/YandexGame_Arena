@@ -166,7 +166,15 @@ namespace Dimasyechka.Code.PlayerControlSystems.TPSAssets
 
         private void FixedUpdate()
         {
-            if (_isControllerBlocked) return;
+            if (_isControllerBlocked)
+            {
+                if (_hasAnimator)
+                {
+                    _animator.SetFloat(_animIDMotionSpeed, 0);
+                }
+
+                return;
+            }
 
             JumpAndGravity();
             GroundedCheck();
@@ -175,6 +183,8 @@ namespace Dimasyechka.Code.PlayerControlSystems.TPSAssets
 
         private void LateUpdate()
         {
+            if (_isControllerBlocked) return;
+
             CameraRotation();
 
             //if (_cineCameraTransposer != null)

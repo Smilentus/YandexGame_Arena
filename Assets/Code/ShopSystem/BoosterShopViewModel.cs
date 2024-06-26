@@ -41,6 +41,14 @@ namespace Dimasyechka.Code.ShopSystem
         }
 
 
+        [RxAdaptableMethod]
+        public void BuyBooster()
+        {
+            Model.BuyRandomBooster();
+            this.Hide();
+        }
+
+
         [ContextMenu("Draw Shop UI")]
         public void DrawShopUI()
         {

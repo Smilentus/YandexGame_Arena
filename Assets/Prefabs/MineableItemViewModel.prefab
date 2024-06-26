@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon:
     value: {fileID: 0}
-  _blockDurability: {fileID: 3276693236248823276}
+  _blockDurabilityVisuals: {fileID: 3276693236248823276}
 --- !u!1 &3134402024791176759
 GameObject:
   m_ObjectHideFlags: 0

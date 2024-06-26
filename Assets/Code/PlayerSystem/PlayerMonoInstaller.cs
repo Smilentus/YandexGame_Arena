@@ -20,6 +20,9 @@ namespace Dimasyechka.Code.PlayerSystem
         [SerializeField]
         private PlayerBlocker _playerBlocker;
 
+        [SerializeField]
+        private PlayerAvailableBoostersContainerViewModel _viewModel;
+
 
         public override void InstallBindings()
         {
@@ -27,6 +30,18 @@ namespace Dimasyechka.Code.PlayerSystem
             BindPlayerInputHandler();
             BindThirdPersonController();
             BindPlayerBlocker();
+            BindPlayerBoostersContainer();
+            BindPlayerBoostersContainerViewModel();
+        }
+
+        private void BindPlayerBoostersContainerViewModel()
+        {
+            Container.Bind<PlayerAvailableBoostersContainerViewModel>().FromInstance(_viewModel).AsSingle();
+        }
+
+        private void BindPlayerBoostersContainer()
+        {
+            Container.Bind<PlayerBoostersContainer>().FromNew().AsSingle();
         }
 
         private void BindPlayerBlocker()
