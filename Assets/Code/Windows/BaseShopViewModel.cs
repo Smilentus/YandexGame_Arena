@@ -1,6 +1,7 @@
 using Dimasyechka.Code.Utilities;
 using Dimasyechka.Lubribrary.RxMV.Core;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
+using System;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -9,6 +10,10 @@ namespace Dimasyechka.Code.Windows
 {
     public class BaseShopViewModel<T> : MonoViewModel<T>
     {
+        public event Action onShow;
+        public event Action onHide;
+
+
         [SerializeField]
         private bool _blockUserController = true;
 
@@ -44,6 +49,8 @@ namespace Dimasyechka.Code.Windows
                 CursorController.Instance.RegisterCursorController(this.name);
 
             OnShow();
+
+            onShow?.Invoke();
         }
 
         [RxAdaptableMethod]
@@ -58,6 +65,8 @@ namespace Dimasyechka.Code.Windows
                 CursorController.Instance.UnRegisterCursorController(this.name);
 
             OnHide();
+
+            onHide?.Invoke();
         }
 
 

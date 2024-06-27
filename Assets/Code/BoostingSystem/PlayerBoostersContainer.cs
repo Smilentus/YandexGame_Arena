@@ -38,6 +38,8 @@ namespace Dimasyechka.Code.BoostingSystem
             {
                 Guid = boosterGuid
             });
+
+            onAvailableBoostersChanged?.Invoke();
         }
 
         public void RemoveBooster(string boosterGuid)
@@ -63,7 +65,7 @@ namespace Dimasyechka.Code.BoostingSystem
             {
                 if (_usedBoosters[i] != null)
                 {
-                    mul *= _usedBoosters[i].Value;
+                    mul += _usedBoosters[i].Value;
                 }
             }
             return mul;
@@ -85,6 +87,9 @@ namespace Dimasyechka.Code.BoostingSystem
                     }
 
                     RemoveBooster(boosterGuid);
+
+                    onUsedBoostersChanged?.Invoke();
+                    onAvailableBoostersChanged?.Invoke();
 
                     return true;
                 }

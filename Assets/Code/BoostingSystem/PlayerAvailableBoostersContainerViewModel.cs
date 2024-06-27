@@ -10,20 +10,23 @@ namespace Dimasyechka.Code.BoostingSystem
     public class PlayerAvailableBoostersContainerViewModel : BaseShopViewModel<PlayerBoostersContainer>
     {
         [SerializeField]
+        private PlayerUsableBoostersContainerViewModel _usableBoostersViewModel;
+
+        [SerializeField]
         private ObtainedPlayerBoosterViewModel _obtainedBoosterViewModelPrefab;
 
         [SerializeField]
         private Transform _contentParent;
 
 
-        private PlayerBoosterViewModelFactory _factory;
+        private ObtainedPlayerBoosterViewModelFactory _factory;
         private PlayerBoostersWarehouse _boostersWarehouse;
         private PlayerBoosterInteractionWindow _interactionWindow;
 
         [Inject]
         public void Construct(
             PlayerBoostersContainer container, 
-            PlayerBoosterViewModelFactory factory,
+            ObtainedPlayerBoosterViewModelFactory factory,
             PlayerBoostersWarehouse warehouse,
             PlayerBoosterInteractionWindow interactionWindow)
         {
@@ -38,6 +41,15 @@ namespace Dimasyechka.Code.BoostingSystem
         protected override void OnSetupModel()
         {
             Model.onAvailableBoostersChanged += OnAvailableBoostersChanged;
+
+            _usableBoostersViewModel.SetupModel(Model);
+        }
+
+        protected override void OnRemoveModel()
+        {
+            Model.onAvailableBoostersChanged -= OnAvailableBoostersChanged;
+
+            _usableBoostersViewModel.RemoveModel();
         }
 
         private void OnAvailableBoostersChanged()
@@ -50,6 +62,7 @@ namespace Dimasyechka.Code.BoostingSystem
         {
             _interactionWindow.Hide();
             DrawAvailableBoosters();
+            _usableBoostersViewModel.DrawUI();
         }
 
 
@@ -80,5 +93,5 @@ namespace Dimasyechka.Code.BoostingSystem
     }
 
 
-    public class PlayerBoosterViewModelFactory : DiCreationFactory<ObtainedPlayerBoosterViewModel> { }
+    public class ObtainedPlayerBoosterViewModelFactory : DiCreationFactory<ObtainedPlayerBoosterViewModel> { }
 }

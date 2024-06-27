@@ -27,7 +27,8 @@ namespace Dimasyechka.Code.ShopSystem
         private void BindBoosterShopViewModel()
         {
             Container.Bind<BoosterShopViewModel>().FromInstance(_boosterShopViewModel).AsSingle();
-            Container.Bind<PlayerBoosterViewModelFactory>().FromNew().AsSingle();
+            Container.Bind<ObtainedPlayerBoosterViewModelFactory>().FromNew().AsSingle();
+            Container.Bind<PlayerUsableBoosterViewModelFactory>().FromNew().AsSingle();
         }
     }
 }

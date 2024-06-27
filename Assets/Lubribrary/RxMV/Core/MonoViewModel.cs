@@ -10,6 +10,8 @@ namespace Dimasyechka.Lubribrary.RxMV.Core
 
 
         private T _preZenjectedModel;
+        
+        protected bool _allowNullModels = false;
 
 
         protected readonly IDisposablesStorage _disposablesStorage = new DisposablesStorage();
@@ -45,10 +47,13 @@ namespace Dimasyechka.Lubribrary.RxMV.Core
         {
             RemoveModel();
 
-            if (model == null)
+            if (!_allowNullModels)
             {
-                Debug.LogError($"Alerted empty model setup '{GetType()}' at object '{gameObject.name}'");
-                return;
+                if (model == null)
+                {
+                    Debug.LogError($"Alerted empty model setup '{GetType()}' at object '{gameObject.name}'");
+                    return;
+                }
             }
 
             Model = model;

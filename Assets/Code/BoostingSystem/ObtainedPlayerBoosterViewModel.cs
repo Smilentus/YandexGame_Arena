@@ -17,6 +17,7 @@ namespace Dimasyechka.Code.BoostingSystem
         public void OnPointerClick(PointerEventData eventData)
         {
             _window.SetupModel(Model);
+            _window.SetEquipInteractions();
             _window.Show();
         }
     }
