@@ -8,7 +8,7 @@ namespace Dimasyechka
 {
     public class FortuneWheel : IInitializable, IFixedTickable
     {
-        private TimeSpan _defaultTimeBetweenSpins = TimeSpan.FromSeconds(10);
+        private TimeSpan _defaultTimeBetweenSpins = TimeSpan.FromMinutes(3);
         private int _minimumSlots = 6;
         private int _maximumSlots = 12;
 
@@ -44,6 +44,11 @@ namespace Dimasyechka
             if (TimeFromLastSpin.Value.TotalSeconds > 0)
             {
                 TimeFromLastSpin.Value -= (TimeSpan.FromSeconds((float)Time.fixedDeltaTime));
+
+                if (TimeFromLastSpin.Value.TotalSeconds <= 0)
+                {
+                    SetNewFortuneWheel();
+                }
             }
         }
 

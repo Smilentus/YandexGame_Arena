@@ -31,7 +31,7 @@ namespace Dimasyechka
 
         public float GetMaxWeight()
         {
-            if (_randomPrizesWithWeights == null)
+            if (_randomPrizesWithWeights == null || _randomPrizesWithWeights.Count == 0)
             {
                 SetRandomAreas();
             }
