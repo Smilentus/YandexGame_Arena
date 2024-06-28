@@ -19,5 +19,17 @@ namespace Dimasyechka
 
         [field: SerializeField]
         public Sprite Icon;
+
+
+        [field: SerializeField]
+        public float RandomWeight;
+
+
+        [field: SerializeField]
+        public int MinValue;
+
+
+        [field: SerializeField]
+        public int MaxValue;
     }
 }

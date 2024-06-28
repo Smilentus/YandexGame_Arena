@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 064cc5be016aab149b94bfc13c652d92, type: 3}
+  m_Name: PrizesWarehouse
+  m_EditorClassIdentifier: 
+  AvailablePrizes:
+  - {fileID: 11400000, guid: ca056e33ffa875d4ba901f8fe4a55a5b, type: 2}
+  - {fileID: 11400000, guid: a3aa648488db91746bd994941dc38972, type: 2}
+  - {fileID: 11400000, guid: f3bd4a5d71d9b6546891caa457361dc8, type: 2}
+  - {fileID: 11400000, guid: 14057e2775ea6a94e9dd2b3edd4b7562, type: 2}
