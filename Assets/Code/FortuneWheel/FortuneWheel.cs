@@ -8,9 +8,9 @@ namespace Dimasyechka
 {
     public class FortuneWheel : IInitializable, IFixedTickable
     {
-        private TimeSpan _defaultTimeBetweenSpins = TimeSpan.FromMinutes(3);
+        private TimeSpan _defaultTimeBetweenSpins = TimeSpan.FromSeconds(15f);
         private int _minimumSlots = 6;
-        private int _maximumSlots = 12;
+        private int _maximumSlots = 10;
 
 
         private List<FortuneWheelSlotData> _prizes = new List<FortuneWheelSlotData>();
@@ -99,7 +99,7 @@ namespace Dimasyechka
 
                         FortuneWheelSlotData slotData = new FortuneWheelSlotData()
                         {
-                            PrizeGuid = randomPrizeArea.Guid,
+                            Prize = prize,
                             SlotIndex = i,
                             Value = UnityEngine.Random.Range(prize.MinValue, prize.MaxValue)
                         };
@@ -115,13 +115,14 @@ namespace Dimasyechka
             Save();
         }
 
-
         public void Spin()
         {
             if (!IsSpinAvailable.Value) return;
 
             IsSpinAvailable.Value = false;
             TimeFromLastSpin.Value = _defaultTimeBetweenSpins;
+
+            
 
             SaveSpinTime();
         }
@@ -132,7 +133,7 @@ namespace Dimasyechka
     public class FortuneWheelSlotData
     {
         public int SlotIndex;
-        public string PrizeGuid;
+        public Prize Prize;
         public int Value;
     }
 }
