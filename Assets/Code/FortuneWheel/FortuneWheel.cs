@@ -8,7 +8,7 @@ namespace Dimasyechka
 {
     public class FortuneWheel : IInitializable, IFixedTickable
     {
-        private TimeSpan _defaultTimeBetweenSpins = TimeSpan.FromSeconds(15f);
+        private TimeSpan _defaultTimeBetweenSpins = TimeSpan.FromMinutes(3f);
         private int _minimumSlots = 6;
         private int _maximumSlots = 10;
 
@@ -26,11 +26,15 @@ namespace Dimasyechka
 
 
         private PrizesWarehouse _warehouse;
+        private FortuneWheelPrizeGiver _prizeGiver;
 
         [Inject]
-        public void Construct(PrizesWarehouse warehouse)
+        public void Construct(
+            PrizesWarehouse warehouse,
+            FortuneWheelPrizeGiver prizeGiver)
         {
             _warehouse = warehouse;
+            _prizeGiver = prizeGiver;
         }
 
 
@@ -115,14 +119,18 @@ namespace Dimasyechka
             Save();
         }
 
+
+        public void GivePrize(string prizeGuid, double value)
+        {
+            _prizeGiver.TryGizePrize(prizeGuid, value);
+        }
+
         public void Spin()
         {
             if (!IsSpinAvailable.Value) return;
 
             IsSpinAvailable.Value = false;
             TimeFromLastSpin.Value = _defaultTimeBetweenSpins;
-
-            
 
             SaveSpinTime();
         }

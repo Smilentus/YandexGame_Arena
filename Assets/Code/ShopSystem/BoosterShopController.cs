@@ -1,4 +1,5 @@
 using Dimasyechka.Code.BoostingSystem;
+using Dimasyechka.Code.PlayerSystem;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,20 +13,28 @@ namespace Dimasyechka.Code.ShopSystem
         public List<RandomizableBooster> SellableBoosters = new List<RandomizableBooster>();
 
         [field: SerializeField]
-        public double BuyPrice = 0;
+        public uint BuyPrice = 0;
 
 
         private PlayerBoostersContainer _playerBoostersContainer;
+        private RuntimePlayerObject _runtimePlayerObject;
 
         [Inject]
-        public void Construct(PlayerBoostersContainer playerBoostersContainer)
+        public void Construct(
+            PlayerBoostersContainer playerBoostersContainer,
+            RuntimePlayerObject runtimePlayerObject)
         {
             _playerBoostersContainer = playerBoostersContainer;
+            _runtimePlayerObject = runtimePlayerObject;
         }
 
 
-        public void BuyRandomBooster()
+        public bool TryBuyRandomBooster()
         {
+            if (_runtimePlayerObject.RuntimePlayerStats.Coins < BuyPrice) { return false; }
+
+            _runtimePlayerObject.RuntimePlayerStats.Coins -= BuyPrice;
+
             float random = Random.Range(0, 101);
 
             List<RandomizableArea> tempAreas = GetRandomAreas();
@@ -41,6 +50,8 @@ namespace Dimasyechka.Code.ShopSystem
                     break;
                 }
             }
+
+            return true;
         }
 
 

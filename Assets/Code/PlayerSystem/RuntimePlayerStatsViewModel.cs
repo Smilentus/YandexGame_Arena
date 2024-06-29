@@ -21,7 +21,7 @@ namespace Dimasyechka
         public ReactiveProperty<double> LegsPower = new ReactiveProperty<double>();
 
         [RxAdaptableProperty]
-        public ReactiveProperty<uint> Coins = new ReactiveProperty<uint>();
+        public ReactiveProperty<ulong> Coins = new ReactiveProperty<ulong>();
 
 
         [Inject]

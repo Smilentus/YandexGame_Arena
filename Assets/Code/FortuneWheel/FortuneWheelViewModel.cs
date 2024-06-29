@@ -8,11 +8,19 @@ using Zenject;
 
 namespace Dimasyechka
 {
+    // TODO: —лишком нагруженный класс, разбить на подклассы
+    // TODO: ѕеределать, чтобы приз записывалс€ сразу после нажати€ и если что в случае ошибки - выдавалс€ сразу же без анимации
     public class FortuneWheelViewModel : BaseShopViewModel<FortuneWheel>
     {
         [RxAdaptableProperty]
         public ReactiveProperty<bool> IsSpinButtonEnabled = new ReactiveProperty<bool>();
 
+        [RxAdaptableProperty]
+        public ReactiveProperty<bool> IsPrizeShown = new ReactiveProperty<bool>();
+
+
+        [SerializeField]
+        private FortuneWheelSlotViewModel _winSlotViewModel;
 
         [SerializeField]
         private Transform _rotatableWheel;
@@ -73,20 +81,12 @@ namespace Dimasyechka
         }
 
 
-        /*
-        «адаЄм угол, к которому мы должны приблизитьс€ (подкрутка привет)
-        ќтсюда формируем сколько кругов мы крутим максимально быстро, а затем замедл€емс€ до нашего значени€
-         рутим 15 полных кругов
-        ѕосле 15-го круга начинаем замедл€тьс€, чтобы дойти до нужного угла
-        16-й круг начинает замедл€ть скорость вращени€ по формуле
-        —оответственно существует количество кругов замедлени€
-        ƒопустим за 2 круга нужно замедлитьс€ до нашего угла
-        «аданный угол = 85 (от 30 до 90 градусов - это победный слот)
-        
-         */
-
-
         private void FixedUpdate()
+        {
+            SpinningTheWheel();
+        }
+
+        private void SpinningTheWheel()
         {
             if (_isSpinning)
             {
@@ -95,14 +95,21 @@ namespace Dimasyechka
                     float angle = _winAngle * _smoothingCurve.Evaluate(_runtimeRotationTimer / _rotationTime);
 
                     _rotatableWheel.DOLocalRotate(Vector3.forward * (angle + _startRotationAngle), Time.fixedDeltaTime);
-                    
+
                     _runtimeRotationTimer += Time.fixedDeltaTime;
                 }
                 else
                 {
                     _isSpinning = false;
-                    
-                    // ¬ыдаЄм приз и т.п.
+
+                    IsPrizeShown.Value = true;
+
+                    _winSlotViewModel.SetupModel(Model.Prizes[_winSlot]);
+
+                    Model.GivePrize(
+                        Model.Prizes[_winSlot].Prize.Guid, 
+                        Model.Prizes[_winSlot].Value
+                    );
                 }
             }
         }
@@ -110,6 +117,9 @@ namespace Dimasyechka
 
         public override void OnDrawUI()
         {
+            IsPrizeShown.Value = false;
+            _winSlotViewModel.RemoveModel();
+
             IsSpinButtonEnabled.Value = Model.IsSpinAvailable.Value;
 
             _rotatableWheel.localEulerAngles = Vector3.zero;
@@ -176,8 +186,8 @@ namespace Dimasyechka
 
             _winAngle -= _startRotationAngle;
 
-            Debug.Log($"RotationTime: {_rotationTime} / WinSlot: {_winSlot} / WinValue: {Model.Prizes[_winSlot].Value} / WinAngle: {_winAngle} / Min: {_minAngle} / Max: {_maxAngle}");
-
+            //Debug.Log($"RotationTime: {_rotationTime} / WinSlot: {_winSlot} / WinValue: {Model.Prizes[_winSlot].Value} / WinAngle: {_winAngle} / Min: {_minAngle} / Max: {_maxAngle}");
+            
             Model.Spin();
         }
     }

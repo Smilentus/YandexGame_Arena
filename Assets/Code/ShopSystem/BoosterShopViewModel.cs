@@ -44,8 +44,14 @@ namespace Dimasyechka.Code.ShopSystem
         [RxAdaptableMethod]
         public void BuyBooster()
         {
-            Model.BuyRandomBooster();
-            this.Hide();
+            if (Model.TryBuyRandomBooster())
+            {
+                this.Hide();
+            }
+            else
+            {
+                Debug.Log($"Not enough money to buy booster!");
+            }
         }
 
 

@@ -11,8 +11,24 @@ namespace Dimasyechka
 
         public override void InstallBindings()
         {
-            Container.Bind<FortuneWheelViewModel>().FromInstance(_fortuneWheelViewModel).AsSingle();
+            BindFortuneWheelViewModel();
+            BindFortuneWheel();
+            BindFortuneWheelPrizeGiver();
+        }
+
+        private void BindFortuneWheel()
+        {
             Container.BindInterfacesAndSelfTo<FortuneWheel>().FromNew().AsSingle().NonLazy();
+        }
+
+        private void BindFortuneWheelPrizeGiver()
+        {
+            Container.BindInterfacesAndSelfTo<FortuneWheelPrizeGiver>().FromNew().AsSingle().NonLazy();
+        }
+
+        private void BindFortuneWheelViewModel()
+        {
+            Container.Bind<FortuneWheelViewModel>().FromInstance(_fortuneWheelViewModel).AsSingle();
         }
     }
 }
