@@ -2,6 +2,8 @@ namespace Dimasyechka.Code.PlayerSystem
 {
     public class RuntimePlayerStats
     {
+        public string PlayerPrefix;
+
         public double MaxHealth;
 
         public double Damage;
@@ -26,10 +28,14 @@ namespace Dimasyechka.Code.PlayerSystem
 
         public RuntimePlayerStats()
         {
+            PlayerPrefix = "Неизвестный";
+
             MaxHealth = 100;
             Damage = 1;
             Dodge = 0;
             Accuracy = 80;
+
+            Coins = 100000;
 
             Fatigue = 0;
             MaxFatigue = 100;

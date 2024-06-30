@@ -21,7 +21,7 @@ namespace Dimasyechka.Code.BaseInteractionSystem
 
             _isInteractionInProgress = true;
 
-            Debug.Log("Interaction Started");
+            //Debug.Log("Interaction Started");
 
             OnInteractionStarted();
         }
@@ -34,7 +34,7 @@ namespace Dimasyechka.Code.BaseInteractionSystem
 
             _isInteractionInProgress = false;
 
-            Debug.Log("Interaction Ended");
+            //Debug.Log("Interaction Ended");
 
             OnInteractionEnded();
         }
