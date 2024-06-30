@@ -105,7 +105,8 @@ namespace Dimasyechka
                     // 3 - mile = (0.2:0.3] etc...
                     float minClamp = (float)Model.PlayerProgress.Value;
                     float maxClamp = (float)Model.ProgressMilestones[i].Value;
-                    generalRatio = Mathf.Clamp01(minClamp / maxClamp / Model.ProgressMilestones.Count);
+                    float startPos = i / (float)Model.ProgressMilestones.Count;
+                    generalRatio = Mathf.Clamp01(startPos + (minClamp / maxClamp / Model.ProgressMilestones.Count));
                     break;
                 }
             }

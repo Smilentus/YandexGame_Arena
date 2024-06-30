@@ -46,7 +46,7 @@ namespace Dimasyechka.Code.ShopSystem
         {
             if (Model.TryBuyRandomBooster())
             {
-                this.Hide();
+                //this.Hide();
             }
             else
             {

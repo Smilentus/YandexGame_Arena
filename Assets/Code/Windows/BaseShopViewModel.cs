@@ -40,8 +40,6 @@ namespace Dimasyechka.Code.Windows
         {
             IsVisible.Value = true;
 
-            OnDrawUI();
-
             if (_blockUserController)
                 _playerBlocker.BlockPlayer();
 
@@ -49,6 +47,8 @@ namespace Dimasyechka.Code.Windows
                 CursorController.Instance.RegisterCursorController(this.name);
 
             OnShow();
+
+            OnDrawUI();
 
             onShow?.Invoke();
         }

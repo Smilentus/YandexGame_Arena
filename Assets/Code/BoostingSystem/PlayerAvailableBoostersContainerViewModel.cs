@@ -2,6 +2,7 @@ using Dimasyechka.Code.ShopSystem;
 using Dimasyechka.Code.Windows;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using Zenject;
 
@@ -40,26 +41,43 @@ namespace Dimasyechka.Code.BoostingSystem
 
         protected override void OnSetupModel()
         {
-            Model.onAvailableBoostersChanged += OnAvailableBoostersChanged;
-
             _usableBoostersViewModel.SetupModel(Model);
         }
 
         protected override void OnRemoveModel()
         {
-            Model.onAvailableBoostersChanged -= OnAvailableBoostersChanged;
-
             _usableBoostersViewModel.RemoveModel();
+
+            Model.onAvailableBoostersChanged -= OnAvailableBoostersChanged;
         }
 
         private void OnAvailableBoostersChanged()
         {
+            if (!isActiveAndEnabled) return;
+
             DrawAvailableBoosters();
+        }
+
+
+        public override void OnShow()
+        {
+            if (Model == null) return;
+
+            Model.onAvailableBoostersChanged += OnAvailableBoostersChanged;
+        }
+
+        public override void OnHide()
+        {
+            if (Model == null) return;
+
+            Model.onAvailableBoostersChanged -= OnAvailableBoostersChanged;
         }
 
 
         public override void OnDrawUI()
         {
+            if (!isActiveAndEnabled) return;
+
             _interactionWindow.Hide();
             DrawAvailableBoosters();
             _usableBoostersViewModel.DrawUI();
