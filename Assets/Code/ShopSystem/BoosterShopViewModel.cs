@@ -1,13 +1,23 @@
+using Dimasyechka.Code.BoostingSystem;
 using Dimasyechka.Code.Windows;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
+using System.Collections;
 using UniRx;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Dimasyechka.Code.ShopSystem
 {
     public class BoosterShopViewModel : BaseShopViewModel<BoosterShopController>
     {
+        [SerializeField]
+        private PlayerBoosterViewModel _rewardViewModel;
+
+        [SerializeField]
+        private RectTransform _priceLayout;
+
+
         [RxAdaptableProperty]
         public ReactiveProperty<double> BuyBoosterPrice = new ReactiveProperty<double>();
 
@@ -29,13 +39,27 @@ namespace Dimasyechka.Code.ShopSystem
         }
 
 
+        public override void OnShow()
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(_priceLayout);
+        }
+
+        public override void OnHide()
+        {
+            StopAllCoroutines();
+        }
+
         public void SetShop(BoosterShopController shopController)
         {
+            _rewardViewModel.gameObject.SetActive(false);
+
             SetupModel(shopController);
 
-            DrawShopUI();
-
             BuyBoosterPrice.Value = Model.BuyPrice;
+
+            //LayoutRebuilder.ForceRebuildLayoutImmediate(_priceLayout);
+
+            DrawShopUI();
 
             this.Show();
         }
@@ -44,9 +68,14 @@ namespace Dimasyechka.Code.ShopSystem
         [RxAdaptableMethod]
         public void BuyBooster()
         {
-            if (Model.TryBuyRandomBooster())
+            string obtainedBoosterGuid;
+
+            if (Model.TryBuyRandomBooster(out obtainedBoosterGuid))
             {
-                //this.Hide();
+                _rewardViewModel.gameObject.SetActive(true);
+                _rewardViewModel.SetupModel(Model.GetBoosterByGuid(obtainedBoosterGuid));
+
+                StartCoroutine(WaitForReward());
             }
             else
             {
@@ -69,6 +98,14 @@ namespace Dimasyechka.Code.ShopSystem
 
                 viewModel.SetupModel(booster);
             }
+        }
+
+
+        private IEnumerator WaitForReward()
+        {
+            yield return new WaitForSecondsRealtime(2f);
+
+            _rewardViewModel.gameObject.SetActive(false);
         }
     }
 

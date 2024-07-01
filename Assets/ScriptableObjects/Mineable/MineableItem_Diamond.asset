@@ -17,4 +17,4 @@ MonoBehaviour:
   Durability: 6
   Icon: {fileID: 21300000, guid: b2698b57784d7674d8a79974af07b8c6, type: 3}
   MineableIcon: {fileID: 21300000, guid: 8e90eb1094395004c8c11bf026858d4c, type: 3}
-  RewardValue: 30
+  RewardValue: 55

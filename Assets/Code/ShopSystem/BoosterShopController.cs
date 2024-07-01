@@ -29,8 +29,10 @@ namespace Dimasyechka.Code.ShopSystem
         }
 
 
-        public bool TryBuyRandomBooster()
+        public bool TryBuyRandomBooster(out string obtainedBoosterGuid)
         {
+            obtainedBoosterGuid = "";
+
             if (_runtimePlayerObject.RuntimePlayerStats.Coins < BuyPrice) { return false; }
 
             _runtimePlayerObject.RuntimePlayerStats.Coins -= BuyPrice;
@@ -47,12 +49,19 @@ namespace Dimasyechka.Code.ShopSystem
                 {
                     Debug.Log($"Obtained booster: {rndArea.Guid}");
                     _playerBoostersContainer.AddBooster(rndArea.Guid);
+                    obtainedBoosterGuid = rndArea.Guid;
                     break;
                 }
             }
 
             return true;
         }
+
+
+        public PlayerBooster GetBoosterByGuid(string boosterGuid) => 
+            SellableBoosters.Where(x => x.Booster.Guid == boosterGuid)
+            .Select(x => x.Booster)
+            .First();
 
 
         public List<RandomizableArea> GetRandomAreas()

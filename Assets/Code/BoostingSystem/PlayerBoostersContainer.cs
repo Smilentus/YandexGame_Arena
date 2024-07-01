@@ -39,6 +39,8 @@ namespace Dimasyechka.Code.BoostingSystem
                 Guid = boosterGuid
             });
 
+            TryEquipBooster(boosterGuid);
+
             onAvailableBoostersChanged?.Invoke();
         }
 
