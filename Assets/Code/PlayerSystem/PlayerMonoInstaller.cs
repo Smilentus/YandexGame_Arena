@@ -62,6 +62,7 @@ namespace Dimasyechka.Code.PlayerSystem
         private void BindRuntimePlayerObject()
         {
             Container.Bind<RuntimePlayerObject>().FromInstance(_runtimePlayerObject).AsSingle();
+            Container.Bind<RuntimePlayerUpgrader>().FromNew().AsSingle();
         }
     }
 }

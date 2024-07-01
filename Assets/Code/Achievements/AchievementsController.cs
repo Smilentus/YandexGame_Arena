@@ -10,12 +10,16 @@ namespace Dimasyechka
         private List<string> _completedAchievements = new List<string>();
 
 
-        private RuntimePlayerObject _runtimePlayerObject;
+        private RuntimePlayerUpgrader _statsUpgrader;
+        private RewardsController _rewardController;
 
         [Inject]
-        public void Construct(RuntimePlayerObject runtimePlayerObject)
+        public void Construct(
+            RuntimePlayerUpgrader statsUpgrader,
+            RewardsController rewardController)
         {
-            _runtimePlayerObject = runtimePlayerObject;
+            _rewardController = rewardController;
+            _statsUpgrader = statsUpgrader;
         }
 
 
@@ -39,8 +43,15 @@ namespace Dimasyechka
             }
             else
             {
-                profile.RewardHandler.Setup(new List<object>() { _runtimePlayerObject });
-                profile.RewardHandler.Reward(profile);
+                _statsUpgrader.SetupRewardHandler(ref profile.RewardHandler);
+
+                _rewardController.ClaimReward(
+                    profile.RewardHandler,
+                    new List<object>()
+                    {
+                        profile
+                    }
+                );
             }
 
             Save();

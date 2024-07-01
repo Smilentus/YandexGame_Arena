@@ -16,6 +16,12 @@ namespace Dimasyechka
         {
             BindPlayerGameProgress();
             BindAchievementsController();
+            BindRewardsController();
+        }
+
+        private void BindRewardsController()
+        {
+            Container.BindInterfacesAndSelfTo<RewardsController>().AsSingle();
         }
 
         private void BindPlayerGameProgress()

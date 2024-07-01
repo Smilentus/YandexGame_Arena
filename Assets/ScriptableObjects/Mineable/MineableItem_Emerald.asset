@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93c04e860cc4d541862f48bd83c139a, type: 3}
   m_Name: MineableItem_Emerald
   m_EditorClassIdentifier: 
-  <Title>k__BackingField: "\u0418\u0437\u0443\u043C\u0440\u0443\u0434"
-  <Durability>k__BackingField: 5
-  <Icon>k__BackingField: {fileID: 21300000, guid: 0cc03d8c5c393704da2930d2dddd32e0, type: 3}
-  <MineableIcon>k__BackingField: {fileID: 21300000, guid: 66fcbde9eeb9e934799a8f5231df0b8a, type: 3}
+  Guid: emerald
+  Title: "\u0418\u0437\u0443\u043C\u0440\u0443\u0434"
+  Durability: 5
+  Icon: {fileID: 21300000, guid: 0cc03d8c5c393704da2930d2dddd32e0, type: 3}
+  MineableIcon: {fileID: 21300000, guid: 66fcbde9eeb9e934799a8f5231df0b8a, type: 3}
+  RewardValue: 18

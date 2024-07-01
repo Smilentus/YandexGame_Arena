@@ -5,14 +5,11 @@ namespace Dimasyechka
     [CreateAssetMenu(fileName = "AllPowersRewardHandler", menuName = "Achievements/RewardHandlers/New AllPowersRewardHandler")]
     public class AllPowersRewardHandler : BasePlayerStatsRewardHandler
     {
-        public override void Reward(AchievementProfile profile)
+        public override void Reward()
         {
-            if (profile is AchievementWithValueProfile)
-            {
-                _runtimePlayerObject.RuntimePlayerStats.LegsPower += (profile as AchievementWithValueProfile).Value;
-                _runtimePlayerObject.RuntimePlayerStats.HandsPower += (profile as AchievementWithValueProfile).Value;
-                _runtimePlayerObject.RuntimePlayerStats.BodyPower += (profile as AchievementWithValueProfile).Value;
-            }
+            _runtimePlayerObject.RuntimePlayerStats.LegsPower += _rewardValue;
+            _runtimePlayerObject.RuntimePlayerStats.HandsPower += _rewardValue;
+            _runtimePlayerObject.RuntimePlayerStats.BodyPower += _rewardValue;
         }
     }
 }

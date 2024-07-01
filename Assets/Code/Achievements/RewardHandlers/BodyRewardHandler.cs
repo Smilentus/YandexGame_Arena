@@ -5,12 +5,9 @@ namespace Dimasyechka
     [CreateAssetMenu(fileName = "BodyRewardHandler", menuName = "Achievements/RewardHandlers/New BodyRewardHandler")]
     public class BodyRewardHandler : BasePlayerStatsRewardHandler
     {
-        public override void Reward(AchievementProfile profile)
+        public override void Reward()
         {
-            if (profile is AchievementWithValueProfile)
-            {
-                _runtimePlayerObject.RuntimePlayerStats.BodyPower += (profile as AchievementWithValueProfile).Value;
-            }
+            _runtimePlayerObject.RuntimePlayerStats.BodyPower += _rewardValue;
         }
     }
 }

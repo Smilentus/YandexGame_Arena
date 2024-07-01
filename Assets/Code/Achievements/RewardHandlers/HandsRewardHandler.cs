@@ -5,12 +5,9 @@ namespace Dimasyechka
     [CreateAssetMenu(fileName = "HandsRewardHandler", menuName = "Achievements/RewardHandlers/New HandsRewardHandler")]
     public class HandsRewardHandler : BasePlayerStatsRewardHandler
     {
-        public override void Reward(AchievementProfile profile)
+        public override void Reward()
         {
-            if (profile is AchievementWithValueProfile)
-            {
-                _runtimePlayerObject.RuntimePlayerStats.HandsPower += (profile as AchievementWithValueProfile).Value;
-            }
+            _runtimePlayerObject.RuntimePlayerStats.HandsPower += _rewardValue;
         }
     }
 }

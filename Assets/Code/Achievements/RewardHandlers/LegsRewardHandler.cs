@@ -5,12 +5,9 @@ namespace Dimasyechka
     [CreateAssetMenu(fileName = "LegsRewardHandler", menuName = "Achievements/RewardHandlers/New LegsRewardHandler")]
     public class LegsRewardHandler : BasePlayerStatsRewardHandler
     {
-        public override void Reward(AchievementProfile profile)
+        public override void Reward()
         {
-            if (profile is AchievementWithValueProfile)
-            {
-                _runtimePlayerObject.RuntimePlayerStats.LegsPower += (profile as AchievementWithValueProfile).Value;
-            }
+            _runtimePlayerObject.RuntimePlayerStats.LegsPower += _rewardValue;
         }
     }
 }

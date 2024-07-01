@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93c04e860cc4d541862f48bd83c139a, type: 3}
   m_Name: MineableItem_Iron
   m_EditorClassIdentifier: 
-  <Title>k__BackingField: "\u0416\u0435\u043B\u0435\u0437\u043E"
-  <Durability>k__BackingField: 3
-  <Icon>k__BackingField: {fileID: 21300000, guid: 4e7b044d49ba9144589e7f48ae962b2d, type: 3}
-  <MineableIcon>k__BackingField: {fileID: 21300000, guid: ceb035c21024ded45923ab3f981bc31d, type: 3}
+  Guid: iron
+  Title: "\u0416\u0435\u043B\u0435\u0437\u043E"
+  Durability: 3
+  Icon: {fileID: 21300000, guid: 4e7b044d49ba9144589e7f48ae962b2d, type: 3}
+  MineableIcon: {fileID: 21300000, guid: ceb035c21024ded45923ab3f981bc31d, type: 3}
+  RewardValue: 5

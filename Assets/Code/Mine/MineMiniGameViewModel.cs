@@ -1,7 +1,10 @@
+using Dimasyechka.Code.PlayerSystem;
 using Dimasyechka.Code.ShopSystem;
 using Dimasyechka.Code.Windows;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG.Example;
 using Zenject;
 
 namespace Dimasyechka.Code.Mine
@@ -9,41 +12,48 @@ namespace Dimasyechka.Code.Mine
     public class MineMiniGameViewModel : BaseShopViewModel<MineMiniGame>
     {
         [SerializeField]
+        private MineableRewardViewModel _mineableRewardViewModel;
+
+
+        [SerializeField]
         private MineableItemViewModel _mineableItemViewModelPrefab;
 
         [SerializeField]
         private List<Transform> _spawnPoints = new List<Transform>();
 
-
-        private MineableItemViewModelFactory _factory;
-
-
         private int _generatedOres = 0;
         private int _clickedOres = 0;
 
+
+        private Dictionary<string, int> _generatedDictionary = new Dictionary<string, int>();
         private List<MineableItemViewModel> _generatedViewModels = new List<MineableItemViewModel>();
 
+        private Mine _mineOrigin;
+
+        private MineableItemViewModelFactory _factory;
+        private RuntimePlayerUpgrader _playerUpgrader;
 
         [Inject]
-        public void Construct(MineableItemViewModelFactory factory)
+        public void Construct(
+            MineableItemViewModelFactory factory,
+            RuntimePlayerUpgrader playerUpgrader)
         {
+            _playerUpgrader = playerUpgrader;
+
             _factory = factory;
         }
 
 
-        public void SetMiniGame(MineMiniGame mineMiniGame)
+        public override void OnHide()
         {
-            SetupModel(mineMiniGame);
-
-            ClearMiniGame();
-
-            DrawUI();
-
-            this.Show();
+            StopAllCoroutines();
         }
 
         private void DrawUI()
         {
+            _mineableRewardViewModel.gameObject.SetActive(false);
+
+
             List<Transform> tempSpawnPoints = GetRandomPointsDistinct();
 
             for (int i = 0; i < tempSpawnPoints.Count; i++)
@@ -51,8 +61,18 @@ namespace Dimasyechka.Code.Mine
                 MineableItemViewModel viewModel =
                     _factory.InstantiateForComponent(_mineableItemViewModelPrefab.gameObject, tempSpawnPoints[i]);
 
-                viewModel.SetupModel(Model.Mine.GetRandomMineableItem());
+                MineableItem rndMineable = Model.Mine.GetRandomMineableItem();
+                viewModel.SetupModel(rndMineable);
                 viewModel.SetCallback(ClickHandler);
+
+                if (_generatedDictionary.ContainsKey(rndMineable.Guid))
+                {
+                    _generatedDictionary[rndMineable.Guid] += 1;
+                }
+                else
+                {
+                    _generatedDictionary[rndMineable.Guid] = 1;
+                }
 
                 _generatedViewModels.Add(viewModel);
             }
@@ -61,6 +81,26 @@ namespace Dimasyechka.Code.Mine
 
             tempSpawnPoints.Clear();
             tempSpawnPoints = null;
+        }
+
+        public void SetMineOrigin(Mine mine)
+        {
+            _mineOrigin = mine;
+
+            StartMiniGame();
+        }
+
+        protected void StartMiniGame()
+        {
+            RemoveModel();
+
+            SetupModel(new MineMiniGame(_mineOrigin));
+
+            ClearMiniGame();
+
+            DrawUI();
+
+            this.Show();
         }
 
 
@@ -72,12 +112,36 @@ namespace Dimasyechka.Code.Mine
 
             if (_clickedOres >= _generatedOres)
             {
-                ClearMiniGame();
+                MineableItem mineableReward = GetReward();
 
-                Hide();
+                _mineableRewardViewModel.gameObject.SetActive(true);
+                _mineableRewardViewModel.SetupModel(mineableReward);
+
+                _playerUpgrader.AddCoins(mineableReward.RewardValue);
+                _playerUpgrader.UpgradeBodyPowerWithMul(1);
+                _playerUpgrader.UpgradeHandsPowerWithMul(1);
+
+                StartCoroutine(WaitForReward());
             }
         }
 
+
+        private MineableItem GetReward()
+        {
+            string guid = "";
+            int mostMined = 0;
+
+            foreach (var kvp in _generatedDictionary)
+            {
+                if (kvp.Value > mostMined)
+                {
+                    guid = kvp.Key;
+                    mostMined = kvp.Value;
+                }
+            }
+
+            return Model.Mine.MineableItems.Find(x => x.Guid == guid);
+        }
 
         private void ClearMiniGame()
         {
@@ -88,6 +152,8 @@ namespace Dimasyechka.Code.Mine
                     Destroy(_generatedViewModels[i].gameObject);
                 }
             }
+
+            _generatedDictionary.Clear();
 
             _generatedOres = 0;
             _clickedOres = 0;
@@ -126,6 +192,13 @@ namespace Dimasyechka.Code.Mine
             return output;
         }
 
+
+        private IEnumerator WaitForReward()
+        {
+            yield return new WaitForSecondsRealtime(2f);
+
+            StartMiniGame();
+        }
     }
 
 

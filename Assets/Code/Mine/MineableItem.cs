@@ -6,18 +6,26 @@ namespace Dimasyechka.Code.Mine
     public class MineableItem : ScriptableObject
     {
         [field: SerializeField]
-        public string Title { get; set; }
+        public string Guid;
 
 
         [field: SerializeField]
-        public int Durability { get; set; }
+        public string Title;
 
 
         [field: SerializeField]
-        public Sprite Icon { get; set; }
+        public int Durability;
 
 
         [field: SerializeField]
-        public Sprite MineableIcon { get; set; }
+        public Sprite Icon;
+
+
+        [field: SerializeField]
+        public Sprite MineableIcon;
+
+
+        [field: SerializeField]
+        public uint RewardValue;
     }
 }

@@ -1,6 +1,4 @@
 using Dimasyechka.Code.BaseInteractionSystem;
-using Dimasyechka.Code.BoostingSystem;
-using Dimasyechka.Code.PlayerSystem;
 using UnityEngine;
 using Zenject;
 
@@ -14,19 +12,16 @@ namespace Dimasyechka
         private TrainingPart _trainingPart;
 
 
-        private RuntimePlayerObject _runtimePlayerObject;
-        private PlayerBoostersContainer _boosterContainer;
+        private RuntimePlayerUpgrader _statsUpgrader;
 
         private BaseTrainingViewModel _trainingViewModel;
 
         [Inject]
         public void Construct(
-            RuntimePlayerObject runtimePlayerObject,
-            PlayerBoostersContainer boosterContainer,
+            RuntimePlayerUpgrader statsUpgrader,
             BaseTrainingViewModel trainingViewModel)
         {
-            _runtimePlayerObject = runtimePlayerObject;
-            _boosterContainer = boosterContainer;
+            _statsUpgrader = statsUpgrader;
 
             _trainingViewModel = trainingViewModel;
         }
@@ -51,13 +46,13 @@ namespace Dimasyechka
             switch (_trainingPart)
             {
                 case TrainingPart.Body:
-                    _runtimePlayerObject.RuntimePlayerStats.BodyPower += _boosterContainer.GetMultiplicationFactor();
+                    _statsUpgrader.UpgradeBodyPowerWithMul(1);
                     break;
                 case TrainingPart.Hands:
-                    _runtimePlayerObject.RuntimePlayerStats.HandsPower += _boosterContainer.GetMultiplicationFactor();
+                    _statsUpgrader.UpgradeHandsPowerWithMul(1);
                     break;
                 case TrainingPart.Legs:
-                    _runtimePlayerObject.RuntimePlayerStats.LegsPower += _boosterContainer.GetMultiplicationFactor();
+                    _statsUpgrader.UpgradeLegsPowerWithMul(1);
                     break;
             }
         }

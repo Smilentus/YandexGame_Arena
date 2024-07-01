@@ -21,7 +21,7 @@ namespace Dimasyechka.Code.Mine
 
         public override void OnInteractionStarted()
         {
-            _mineMiniGameViewModel.SetMiniGame(new MineMiniGame(_mine));
+            _mineMiniGameViewModel.SetMineOrigin(_mine);
         }
 
         public override void OnInteractionEnded()
