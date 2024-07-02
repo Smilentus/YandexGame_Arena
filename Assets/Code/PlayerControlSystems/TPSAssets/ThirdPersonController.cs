@@ -206,10 +206,10 @@ namespace Dimasyechka.Code.PlayerControlSystems.TPSAssets
             _isGrounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
                 QueryTriggerInteraction.Ignore);
 
-            if (_hasAnimator)
-            {
-                _animator.SetBool(_animIDGrounded, _isGrounded);
-            }
+            //if (_hasAnimator)
+            //{
+            //    _animator.SetBool(_animIDGrounded, _isGrounded);
+            //}
         }
 
         private void CameraRotation()
@@ -306,8 +306,8 @@ namespace Dimasyechka.Code.PlayerControlSystems.TPSAssets
 
                 if (_hasAnimator)
                 {
-                    _animator.SetBool(_animIDJump, false);
-                    _animator.SetBool(_animIDFreeFall, false);
+                    //_animator.SetBool(_animIDJump, false);
+                    //_animator.SetBool(_animIDFreeFall, false);
                 }
 
                 if (_verticalVelocity < 0.0f)
@@ -322,7 +322,7 @@ namespace Dimasyechka.Code.PlayerControlSystems.TPSAssets
 
                     if (_hasAnimator)
                     {
-                        _animator.SetBool(_animIDJump, true);
+                        //_animator.SetBool(_animIDJump, true);
                     }
                 }
 
@@ -343,7 +343,7 @@ namespace Dimasyechka.Code.PlayerControlSystems.TPSAssets
                 {
                     if (_hasAnimator)
                     {
-                        _animator.SetBool(_animIDFreeFall, true);
+                        //_animator.SetBool(_animIDFreeFall, true);
                     }
                 }
 

@@ -4,16 +4,27 @@ namespace Dimasyechka.Code.BattleSystem
 {
     public class BattleController : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        public void StartBattle(BattleSettings battleSettings)
         {
-        
+            SetupPlayer();
+            SpawnEnemies();
         }
 
-        // Update is called once per frame
-        void Update()
+
+        private void SetupPlayer()
         {
+
+        }
         
+        private void SpawnEnemies()
+        {
+            
+        }
+
+
+        private void EndBattle()
+        {
+            
         }
     }
 }
