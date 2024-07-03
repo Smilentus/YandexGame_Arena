@@ -1,4 +1,5 @@
 using Dimasyechka.Code.HealthSystem;
+using System;
 using UniRx;
 using UnityEngine;
 
@@ -6,14 +7,18 @@ namespace Dimasyechka
 {
     public class RuntimeBattleCharacter : MonoBehaviour
     {
+        public event Action onDead;
+
         public ReactiveProperty<string> CharacterName = new ReactiveProperty<string>();
 
 
         [SerializeField]
         protected HealthComponent _health;
+        public HealthComponent Health => _health;
 
         [SerializeField]
         protected DamageComponent _damage;
+        public DamageComponent Damage => _damage;
 
 
         private bool _isDead;
@@ -36,6 +41,8 @@ namespace Dimasyechka
 
             _isDead = true;
             _damage.ToggleComponent(false);
+
+            onDead?.Invoke();
         }
 
 
