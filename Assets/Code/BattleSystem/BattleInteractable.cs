@@ -22,6 +22,8 @@ namespace Dimasyechka
 
         public override void OnInteractionStarted()
         {
+            if (_battleController.IsBattleInProgress) return;
+
             _battleController.StartBattle(_battleSettings);
         }
     }

@@ -179,13 +179,13 @@ namespace Dimasyechka.Code.PlayerControlSystems.TPSAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+
+            CameraRotation();
         }
 
         private void LateUpdate()
         {
             if (_isControllerBlocked) return;
-
-            CameraRotation();
 
             //if (_cineCameraTransposer != null)
             //{
@@ -216,7 +216,7 @@ namespace Dimasyechka.Code.PlayerControlSystems.TPSAssets
         {
             if (_playerInputHandler.LookVector.sqrMagnitude >= _inputThreshold && !LockCameraPosition)
             {
-                float deltaTimeMultiplier = Time.deltaTime;
+                float deltaTimeMultiplier = Time.fixedDeltaTime;
 
                 _cinemachineTargetYaw += _playerInputHandler.LookVector.x * CameraHorizontalSens * deltaTimeMultiplier;
                 _cinemachineTargetPitch += _playerInputHandler.LookVector.y * CameraVerticalSens * deltaTimeMultiplier;

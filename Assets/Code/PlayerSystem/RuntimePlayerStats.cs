@@ -4,11 +4,31 @@ namespace Dimasyechka.Code.PlayerSystem
     {
         public string PlayerPrefix;
 
-        public double MaxHealth;
+        public double MaxHealth
+        {
+            get
+            {
+                if (BodyPower <= 10)
+                {
+                    return 10;
+                }
 
-        public double Damage;
-        public double Dodge;
-        public double Accuracy;
+                return BodyPower;
+            }
+        }
+
+        public double Damage
+        {
+            get
+            {
+                if (HandsPower <= 0)
+                {
+                    return 1;
+                }
+
+                return HandsPower;
+            }
+        }
 
         public double Fatigue;
         public double MaxFatigue;
@@ -29,11 +49,6 @@ namespace Dimasyechka.Code.PlayerSystem
         public RuntimePlayerStats()
         {
             PlayerPrefix = "Неизвестный";
-
-            MaxHealth = 100;
-            Damage = 1;
-            Dodge = 0;
-            Accuracy = 80;
 
             Coins = 100000;
 

@@ -155,6 +155,7 @@ MonoBehaviour:
     ReflectiveNames: []
     SelectedIndex: -1
     SelectedName: 
+  _formatNumerics: 1
   _text:
     ReflectiveNames:
     - Value (Double)

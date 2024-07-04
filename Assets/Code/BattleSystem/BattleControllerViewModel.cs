@@ -13,6 +13,9 @@ namespace Dimasyechka
         [SerializeField]
         private HealthComponentViewModel _healthViewModel;
 
+        [SerializeField]
+        private DamageComponentViewModel _damageViewModel;
+
 
         [RxAdaptableProperty]
         public ReactiveProperty<bool> IsBattleInProgress = new ReactiveProperty<bool>();
@@ -71,6 +74,7 @@ namespace Dimasyechka
             IsBattleInProgress.Value = true;
 
             _healthViewModel.SetupModel(Model.InstantiatedPlayerCharacter.Health);
+            _damageViewModel.SetupModel(Model.InstantiatedPlayerCharacter.Damage);
         }
 
         private void OnBattleEnded()

@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 7699585896045745462}
   - component: {fileID: 6298618943938546874}
   - component: {fileID: 6919681606120623953}
+  - component: {fileID: 4132144577480910820}
   m_Layer: 0
   m_Name: RuntimePlayerObject
   m_TagString: Untagged
@@ -305,8 +306,8 @@ MonoBehaviour:
   _cinemachineCameraTarget: {fileID: 7432889205704172087}
   _topClamp: 70
   _bottomClamp: -30
-  _cameraVerticalSens: 60
-  _cameraHorizontalSens: 60
+  _cameraVerticalSens: 10
+  _cameraHorizontalSens: 10
   _lockCameraPosition: 0
   _animator: {fileID: 300395180388520059}
   _controller: {fileID: 7699585896045745462}
@@ -335,6 +336,18 @@ MonoBehaviour:
   IsMovingAnalog: 0
   UseInputLook: 1
   HideCursorOnLook: 0
+--- !u!114 &4132144577480910820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8376502728024343900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174c93a484416c141be2344fffb59f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8473344478085393012
 GameObject:
   m_ObjectHideFlags: 0

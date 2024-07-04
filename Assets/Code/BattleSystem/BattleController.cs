@@ -22,15 +22,17 @@ namespace Dimasyechka.Code.BattleSystem
 
 
         [SerializeField]
-        private RuntimeBattleCharacter _playerBattleCharacterPrefab;
+        private GameObject _spawnBounds;
+
 
         [SerializeField]
-        private RuntimeBattleCharacter _enemyBattleCharacterPrefab;
+        private RuntimeBattleCharacter _playerBattleCharacterPrefab;
 
 
         private List<RuntimeBattleCharacter> _enemyObjects = new List<RuntimeBattleCharacter>();
 
         private bool _isBattleInProgress;
+        public bool IsBattleInProgress => _isBattleInProgress;
 
         private BattleSettings _lastBattleSettings;
 
@@ -40,15 +42,21 @@ namespace Dimasyechka.Code.BattleSystem
 
 
         private RuntimePlayerObject _runtimePlayerObject;
+        private PlayerObjectTag _playerObjectTag;
         private RuntimeBattleCharacterFactory _factory;
         private RuntimePlayerUpgrader _playerUpgrader;
 
         [Inject]
         public void Construct(
             RuntimePlayerObject runtimePlayerObject,
+            RuntimePlayerUpgrader playerUpgrader,
+            PlayerObjectTag playerObjectTag,
             RuntimeBattleCharacterFactory factory)
         {
             _factory = factory;
+
+            _playerUpgrader = playerUpgrader;
+            _playerObjectTag = playerObjectTag;
             _runtimePlayerObject = runtimePlayerObject;
         }
 
@@ -86,13 +94,13 @@ namespace Dimasyechka.Code.BattleSystem
         {
             _instantiatedPlayerCharacter = _factory.InstantiateForComponent(
                 _playerBattleCharacterPrefab.gameObject,
-                _runtimePlayerObject.transform
+                _playerObjectTag.transform
             );
 
             _instantiatedPlayerCharacter.SetupCharacter(
                 "Player",
-                _runtimePlayerObject.RuntimePlayerStats.BodyPower,
-                _runtimePlayerObject.RuntimePlayerStats.HandsPower
+                _runtimePlayerObject.RuntimePlayerStats.MaxHealth,
+                _runtimePlayerObject.RuntimePlayerStats.Damage
             );
 
             _instantiatedPlayerCharacter.onDead += OnPlayerLost;
@@ -108,7 +116,27 @@ namespace Dimasyechka.Code.BattleSystem
 
         private void CreateEnemy(BattleCharacterProfile profile)
         {
+            RuntimeBattleCharacter enemy = _factory.InstantiateForComponent(
+                profile.CharacterPrefab.gameObject,
+                GetRandomSpawnPosition()
+            );
 
+            enemy.SetupCharacter(profile.CharacterName, profile.Health, profile.Damage);
+            enemy.onDead += OnEnemyDead;
+
+            _enemyObjects.Add(enemy);
+        }
+
+
+        private Vector3 GetRandomSpawnPosition()
+        {
+            Bounds bounds = _spawnBounds.GetComponent<Renderer>().bounds;
+
+            return new Vector3(
+                UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
+                1,
+                UnityEngine.Random.Range(bounds.min.z, bounds.max.z)
+            );
         }
 
 
@@ -139,7 +167,7 @@ namespace Dimasyechka.Code.BattleSystem
 
         private void GiveRewardAfterBattle()
         {
-            _playerUpgrader.AddCoins(50);
+            _playerUpgrader.AddCoins(100);
         }
 
 
@@ -168,6 +196,8 @@ namespace Dimasyechka.Code.BattleSystem
             {
                 Destroy(_enemyObjects[i].gameObject);
             }
+
+            _enemyObjects.Clear();
         }
     }
 

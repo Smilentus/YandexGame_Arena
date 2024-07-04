@@ -1,14 +1,17 @@
 using Dimasyechka.Code.HealthSystem;
+using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
+using Dimasyechka.Lubribrary.RxMV.UniRx.RxLink;
 using System;
 using UniRx;
 using UnityEngine;
 
 namespace Dimasyechka
 {
-    public class RuntimeBattleCharacter : MonoBehaviour
+    public class RuntimeBattleCharacter : MonoBehaviour, IRxLinkable
     {
         public event Action onDead;
 
+        [RxAdaptableProperty]
         public ReactiveProperty<string> CharacterName = new ReactiveProperty<string>();
 
 

@@ -15,6 +15,14 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
         private UniRxReflectionField _color = new UniRxReflectionField();
 
 
+        [Header("General")]
+        [SerializeField]
+        private bool _formatNumerics = false;
+
+        [SerializeField]
+        private string _formatString = "";
+
+
         [Header("Single Text Settings")]
         [SerializeField]
         private UniRxReflectionField _text = new UniRxReflectionField();
@@ -144,7 +152,7 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyInt[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _component.text = ((x != null) ? x.ToString() : string.Empty);
+                    _component.text = ((x != null) ? x.ToString(_formatString) : string.Empty);
                 }));
             }
 
@@ -152,7 +160,7 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyFloat[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _component.text = ((x != null) ? x.ToString() : string.Empty);
+                    _component.text = ((x != null) ? x.ToString(_formatString) : string.Empty);
                 }));
             }
 
@@ -160,7 +168,14 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyDouble[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _component.text = ((x != null) ? x.ToString() : string.Empty);
+                    if (_formatNumerics)
+                    {
+                        _component.text = ((x != null) ? NumericsFormatter.FormatNumerics(x, _formatString) : string.Empty);
+                    }
+                    else
+                    {
+                        _component.text = ((x != null) ? x.ToString(_formatString) : string.Empty);
+                    }
                 }));
             }
 
@@ -168,7 +183,14 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyLong[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _component.text = ((x != null) ? x.ToString() : string.Empty);
+                    if (_formatNumerics)
+                    {
+                        _component.text = ((x != null) ? NumericsFormatter.FormatNumerics(x, _formatString) : string.Empty);
+                    }
+                    else
+                    {
+                        _component.text = ((x != null) ? x.ToString(_formatString) : string.Empty);
+                    }
                 }));
             }
 
@@ -176,7 +198,14 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyUlong[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _component.text = ((x != null) ? x.ToString() : string.Empty);
+                    if (_formatNumerics)
+                    {
+                        _component.text = ((x != null) ? NumericsFormatter.FormatNumerics(x, _formatString) : string.Empty);
+                    }
+                    else
+                    {
+                        _component.text = ((x != null) ? x.ToString(_formatString) : string.Empty);
+                    }
                 }));
             }
 
@@ -184,7 +213,7 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyShort[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _component.text = ((x != null) ? x.ToString() : string.Empty);
+                    _component.text = ((x != null) ? x.ToString(_formatString) : string.Empty);
                 }));
             }
 
@@ -192,7 +221,7 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyUshort[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _component.text = ((x != null) ? x.ToString() : string.Empty);
+                    _component.text = ((x != null) ? x.ToString(_formatString) : string.Empty);
                 }));
             }
 
@@ -200,7 +229,7 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyByte[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _component.text = ((x != null) ? x.ToString() : string.Empty);
+                    _component.text = ((x != null) ? x.ToString(_formatString) : string.Empty);
                 }));
             }
 
@@ -208,7 +237,7 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertySbyte[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _component.text = ((x != null) ? x.ToString() : string.Empty);
+                    _component.text = ((x != null) ? x.ToString(_formatString) : string.Empty);
                 }));
             }
         }
@@ -240,7 +269,7 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyInt[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString() : string.Empty);
+                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString(_formatString) : string.Empty);
                     UpdateComponentWithMultipleOutput();
                 }));
             }
@@ -249,7 +278,7 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyFloat[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString() : string.Empty);
+                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString(_formatString) : string.Empty);
                     UpdateComponentWithMultipleOutput();
                 }));
             }
@@ -258,7 +287,15 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyDouble[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString() : string.Empty);
+                    if (_formatNumerics)
+                    {
+                        _multipleTextOutput[outputIndex] = ((x != null) ? NumericsFormatter.FormatNumerics(x, _formatString) : string.Empty);
+                    }
+                    else
+                    {
+                        _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString(_formatString) : string.Empty);
+                    }
+                  
                     UpdateComponentWithMultipleOutput();
                 }));
             }
@@ -267,7 +304,15 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyLong[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString() : string.Empty);
+                    if (_formatNumerics)
+                    {
+                        _multipleTextOutput[outputIndex] = ((x != null) ? NumericsFormatter.FormatNumerics(x, _formatString) : string.Empty);
+                    }
+                    else
+                    {
+                        _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString(_formatString) : string.Empty);
+                    }
+
                     UpdateComponentWithMultipleOutput();
                 }));
             }
@@ -276,7 +321,15 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyUlong[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString() : string.Empty);
+                    if (_formatNumerics)
+                    {
+                        _multipleTextOutput[outputIndex] = ((x != null) ? NumericsFormatter.FormatNumerics(x, _formatString) : string.Empty);
+                    }
+                    else
+                    {
+                        _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString(_formatString) : string.Empty);
+                    }
+
                     UpdateComponentWithMultipleOutput();
                 }));
             }
@@ -285,7 +338,7 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyShort[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString() : string.Empty);
+                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString(_formatString) : string.Empty);
                     UpdateComponentWithMultipleOutput();
                 }));
             }
@@ -294,7 +347,7 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyUshort[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString() : string.Empty);
+                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString(_formatString) : string.Empty);
                     UpdateComponentWithMultipleOutput();
                 }));
             }
@@ -303,7 +356,7 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertyByte[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString() : string.Empty);
+                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString(_formatString) : string.Empty);
                     UpdateComponentWithMultipleOutput();
                 }));
             }
@@ -312,7 +365,7 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(propertySbyte[reflectionField.SelectedName].Subscribe(x =>
                 {
-                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString() : string.Empty);
+                    _multipleTextOutput[outputIndex] = ((x != null) ? x.ToString(_formatString) : string.Empty);
                     UpdateComponentWithMultipleOutput();
                 }));
             }
@@ -357,7 +410,6 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
 
             _component.text = output;
         }
-
 
         private Dictionary<string, int> ParseEvaluationPoints()
         {

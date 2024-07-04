@@ -12,6 +12,9 @@ namespace Dimasyechka.Code.PlayerSystem
         private RuntimePlayerObject _runtimePlayerObject;
 
         [SerializeField]
+        private PlayerObjectTag _playerObjectTag;
+
+        [SerializeField]
         private ThirdPersonController _thirdPersonController;
 
         [SerializeField]
@@ -63,6 +66,7 @@ namespace Dimasyechka.Code.PlayerSystem
         {
             Container.Bind<RuntimePlayerObject>().FromInstance(_runtimePlayerObject).AsSingle();
             Container.Bind<RuntimePlayerUpgrader>().FromNew().AsSingle();
+            Container.Bind<PlayerObjectTag>().FromInstance(_playerObjectTag).AsSingle();
         }
     }
 }

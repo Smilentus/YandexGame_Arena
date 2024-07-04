@@ -142,5 +142,10 @@ namespace Dimasyechka.Code.ShopSystem
         {
             return _diContainer.InstantiatePrefabForComponent<T>(prefab, parent);
         }
+
+        public virtual T InstantiateForComponent(GameObject prefab, Vector3 position)
+        {
+            return _diContainer.InstantiatePrefabForComponent<T>(prefab, position, Quaternion.identity, null);
+        }
     }
 }

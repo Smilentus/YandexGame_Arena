@@ -105,7 +105,7 @@ namespace Dimasyechka.Lubribrary.RxMV.UniRx.Adapters
             {
                 _disposablesStorage.AddToDisposables(fillAmountProperty[_fillAmount.SelectedName].Subscribe(x =>
                 {
-                    _component.fillAmount = x;
+                    _component.fillAmount = Mathf.Clamp01(x);
                 }));
             }
         }

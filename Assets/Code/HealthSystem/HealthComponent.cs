@@ -29,11 +29,12 @@ namespace Dimasyechka.Code.HealthSystem
 
             Health.Value -= damage;
 
-            HealthRatio.Value = (float)Health.Value / (float)MaxHealth.Value;
+            HealthRatio.Value = Mathf.Clamp01((float)Health.Value / (float)MaxHealth.Value);
 
             if (Health.Value <= 0)
             {
                 HealthRatio.Value = 0;
+                Health.Value = 0;
 
                 _isHealthBelowZero = true;
                 
