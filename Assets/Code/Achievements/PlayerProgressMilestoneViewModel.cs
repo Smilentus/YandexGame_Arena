@@ -1,12 +1,12 @@
+using System;
 using Dimasyechka.Lubribrary.RxMV.Core;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Extensions;
-using System;
 using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Achievements
 {
     public class PlayerProgressMilestoneViewModel : MonoViewModel<PlayerProgressMilestone>, IPointerClickHandler
     {

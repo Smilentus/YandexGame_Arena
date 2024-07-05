@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Dreams
 {
     public class DreamsController : MonoBehaviour
     {

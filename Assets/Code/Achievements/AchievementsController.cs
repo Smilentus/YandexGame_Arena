@@ -1,9 +1,10 @@
-using Dimasyechka.Code.PlayerSystem;
 using System.Collections.Generic;
+using Dimasyechka.Code.PlayerSystem;
+using Dimasyechka.Code.Rewards;
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Achievements
 {
     public class AchievementsController : MonoBehaviour
     {

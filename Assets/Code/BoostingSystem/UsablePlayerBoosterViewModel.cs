@@ -9,6 +9,7 @@ namespace Dimasyechka.Code.BoostingSystem
 
         private int _slotIndex;
 
+
         [Inject]
         public void Construct(PlayerBoosterInteractionWindow window)
         {

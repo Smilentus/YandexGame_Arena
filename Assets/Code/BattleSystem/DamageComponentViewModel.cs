@@ -1,12 +1,9 @@
 using Dimasyechka.Lubribrary.RxMV.Core;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Extensions;
-using System.Collections;
-using System.Collections.Generic;
 using UniRx;
-using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.BattleSystem
 {
     public class DamageComponentViewModel : MonoViewModel<DamageComponent>
     {

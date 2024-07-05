@@ -4,7 +4,7 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Athletics.Running
 {
     public class AthleticsRunningMiniGame : BaseMiniGameController
     {

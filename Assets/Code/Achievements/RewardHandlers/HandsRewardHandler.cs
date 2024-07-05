@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Achievements.RewardHandlers
 {
     [CreateAssetMenu(fileName = "HandsRewardHandler", menuName = "Achievements/RewardHandlers/New HandsRewardHandler")]
     public class HandsRewardHandler : BasePlayerStatsRewardHandler

@@ -1,10 +1,7 @@
-using Dimasyechka.Code.BattleSystem;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.BattleSystem
 {
     public class BattleMonoInstaller : MonoInstaller
     {

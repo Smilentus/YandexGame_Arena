@@ -15,7 +15,7 @@ MonoBehaviour:
   Guid: prize_body
   Title: "\u0422\u0435\u043B\u043E"
   Description: 
-  Icon: {fileID: 21300000, guid: 030c848227c22d7458428ac6b12b7293, type: 3}
+  Icon: {fileID: 21300000, guid: 3ddf51181f855334e98fe9674d21a1f9, type: 3}
   RandomWeight: 10
   MinValue: 100
   MaxValue: 1000

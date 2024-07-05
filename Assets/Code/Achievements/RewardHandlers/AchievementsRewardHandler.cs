@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Achievements.RewardHandlers
 {
     public class AchievementsRewardHandler : MonoBehaviour
     {

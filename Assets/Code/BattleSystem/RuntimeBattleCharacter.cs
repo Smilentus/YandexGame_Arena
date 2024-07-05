@@ -1,14 +1,17 @@
+using System;
 using Dimasyechka.Code.HealthSystem;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
 using Dimasyechka.Lubribrary.RxMV.UniRx.RxLink;
-using System;
 using UniRx;
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.BattleSystem
 {
     public class RuntimeBattleCharacter : MonoBehaviour, IRxLinkable
     {
+        private readonly int _attackTrigger = Animator.StringToHash("AttackTrigger");
+
+
         public event Action onDead;
 
         [RxAdaptableProperty]
@@ -24,17 +27,24 @@ namespace Dimasyechka
         public DamageComponent Damage => _damage;
 
 
+        [SerializeField]
+        protected Animator _animator;
+        public Animator AnimatorReference => _animator;
+
+
         private bool _isDead;
 
 
         private void Awake()
         {
             _health.onHealthBelowZero += OnHealthBelowZero;
+            _damage.onAttack += OnAttackCallback;
         }
 
         private void OnDestroy()
         {
             _health.onHealthBelowZero -= OnHealthBelowZero;
+            _damage.onAttack -= OnAttackCallback;
         }
 
         
@@ -53,10 +63,25 @@ namespace Dimasyechka
         {
             CharacterName.Value = name;
 
-            _health?.SetHealthAndMaxHealth(health);
+            _health.SetHealthAndMaxHealth(health);
 
-            _damage?.Setup(damage);
+            _damage.Setup(damage);
             _damage.ToggleComponent(true);
+        }
+
+
+        public void SetupAnimator(Animator animator)
+        {
+            _animator = animator;
+        }
+
+
+        private void OnAttackCallback()
+        {
+            if (_animator != null)
+            {
+                _animator.SetTrigger(_attackTrigger);
+            }
         }
     }
 }

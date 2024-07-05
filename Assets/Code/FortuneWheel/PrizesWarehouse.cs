@@ -1,10 +1,10 @@
-using Dimasyechka.Code.ShopSystem;
 using System.Collections.Generic;
 using System.Linq;
+using Dimasyechka.Code.ShopSystem;
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.FortuneWheel
 {
     [CreateAssetMenu(fileName = "PrizesWarehouse", menuName = "FortuneWheel/New PrizesWarehouse")]
     public class PrizesWarehouse : ScriptableObjectInstaller

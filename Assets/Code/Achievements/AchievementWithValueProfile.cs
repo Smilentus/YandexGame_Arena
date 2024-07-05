@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Achievements
 {
     [CreateAssetMenu(fileName = "AchievementWithValueProfile", menuName = "Achievements/New AchievementWithValueProfile")]
     public class AchievementWithValueProfile : AchievementProfile

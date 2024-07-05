@@ -1,10 +1,9 @@
-using Dimasyechka.Code.HealthSystem;
 using Dimasyechka.Lubribrary.RxMV.Core;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Extensions;
 using UniRx;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.HealthSystem
 {
     public class HealthComponentViewModel : MonoViewModel<HealthComponent>
     {

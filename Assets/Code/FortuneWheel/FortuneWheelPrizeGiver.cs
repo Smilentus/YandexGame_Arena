@@ -1,8 +1,8 @@
-using Dimasyechka.Code.PlayerSystem;
 using System.Collections.Generic;
+using Dimasyechka.Code.PlayerSystem;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.FortuneWheel
 {
     public class FortuneWheelPrizeGiver : IInitializable
     {

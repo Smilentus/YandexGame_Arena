@@ -6,7 +6,7 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.FortuneWheel
 {
     // TODO: Слишком нагруженный класс, разбить на подклассы
     // TODO: Переделать, чтобы приз записывался сразу после нажатия и если что в случае ошибки - выдавался сразу же без анимации

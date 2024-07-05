@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.FortuneWheel
 {
     [CreateAssetMenu(fileName = "FortuneWheelPrize", menuName = "FortuneWheel/FortuneWheelPrize")]
     public class Prize : ScriptableObject

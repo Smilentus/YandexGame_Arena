@@ -103,6 +103,8 @@ namespace Dimasyechka.Code.BattleSystem
                 _runtimePlayerObject.RuntimePlayerStats.Damage
             );
 
+            _instantiatedPlayerCharacter.SetupAnimator(_playerObjectTag.AnimatorReference);
+
             _instantiatedPlayerCharacter.onDead += OnPlayerLost;
         }
 
@@ -134,7 +136,7 @@ namespace Dimasyechka.Code.BattleSystem
 
             return new Vector3(
                 UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
-                1,
+                0,
                 UnityEngine.Random.Range(bounds.min.z, bounds.max.z)
             );
         }

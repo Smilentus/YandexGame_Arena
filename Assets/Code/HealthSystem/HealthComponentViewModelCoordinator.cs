@@ -1,7 +1,6 @@
-using Dimasyechka.Code.HealthSystem;
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.HealthSystem
 {
     public class HealthComponentViewModelCoordinator : MonoBehaviour
     {

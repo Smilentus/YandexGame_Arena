@@ -1,7 +1,8 @@
+using Dimasyechka.Code.Rewards;
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Achievements
 {
     public class AchievementsMonoInstaller : MonoInstaller
     {

@@ -4,7 +4,7 @@ using UniRx;
 using UnityEngine.EventSystems;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.FortuneWheel
 {
     public class FortuneWheelTimerButtonViewModel : MonoViewModel<FortuneWheel>, IPointerClickHandler
     {

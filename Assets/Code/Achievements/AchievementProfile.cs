@@ -1,6 +1,7 @@
+using Dimasyechka.Code.Achievements.RewardHandlers;
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Achievements
 {
     [CreateAssetMenu(fileName = "AchievementProfile", menuName = "Achievements/New AchievementProfile")]
     public class AchievementProfile : ScriptableObject

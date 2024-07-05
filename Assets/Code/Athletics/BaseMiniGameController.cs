@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Athletics
 {
     public abstract class BaseMiniGameController : MonoBehaviour
     {

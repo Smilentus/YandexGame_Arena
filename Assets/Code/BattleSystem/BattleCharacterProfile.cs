@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.BattleSystem
 {
     [CreateAssetMenu(fileName = "BattleCharacterProfile", menuName = "BattleSystem/New BattleCharacterProfile")]
     public class BattleCharacterProfile : ScriptableObject

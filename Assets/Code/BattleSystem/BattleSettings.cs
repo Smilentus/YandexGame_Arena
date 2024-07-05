@@ -1,6 +1,4 @@
-using System;
-
-namespace Dimasyechka
+namespace Dimasyechka.Code.BattleSystem
 {
     [System.Serializable]
     public class BattleSettings

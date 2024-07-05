@@ -1,7 +1,6 @@
-using Dimasyechka.Code.Mine;
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Mine
 {
     [CreateAssetMenu(fileName = "MineableReward", menuName = "Mineable/New MineableReward")]
     public class MineableReward : ScriptableObject

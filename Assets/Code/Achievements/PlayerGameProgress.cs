@@ -1,10 +1,10 @@
-using Dimasyechka.Code.PlayerSystem;
 using System.Collections.Generic;
+using Dimasyechka.Code.PlayerSystem;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Achievements
 {
     public class PlayerGameProgress : MonoBehaviour
     {

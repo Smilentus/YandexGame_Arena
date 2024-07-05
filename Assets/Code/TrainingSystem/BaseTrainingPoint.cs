@@ -1,8 +1,9 @@
 using Dimasyechka.Code.BaseInteractionSystem;
+using Dimasyechka.Code.PlayerSystem;
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.TrainingSystem
 {
     public class BaseTrainingPoint : BaseInteractable
     {

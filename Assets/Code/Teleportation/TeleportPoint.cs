@@ -1,8 +1,10 @@
 using Dimasyechka.Code.BaseInteractionSystem;
+using Dimasyechka.Code.PlayerSystem;
+using Dimasyechka.Code.ScreenFader;
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Teleportation
 {
     public class TeleportPoint : BaseInteractable
     {

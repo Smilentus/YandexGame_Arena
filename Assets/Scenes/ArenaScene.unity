@@ -911,15 +911,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SellableBoosters:
-  - ObtainChance: 60
+  - ObtainChance: 35
     Booster: {fileID: 11400000, guid: cc63868fcbfca734cb48686a00b10f8e, type: 2}
-  - ObtainChance: 22
+  - ObtainChance: 25
     Booster: {fileID: 11400000, guid: ab3b7941955e387448507e81e200ecb6, type: 2}
-  - ObtainChance: 11
+  - ObtainChance: 20
     Booster: {fileID: 11400000, guid: 9e79090ab494efd4d90d06cd01387393, type: 2}
-  - ObtainChance: 6
+  - ObtainChance: 15
     Booster: {fileID: 11400000, guid: c79ede0f9340be44a91b25c9f5f1594c, type: 2}
-  - ObtainChance: 1
+  - ObtainChance: 5
     Booster: {fileID: 11400000, guid: c6fb57f3d9adab84da0a99ebecfe7192, type: 2}
   BuyPrice: 100
 --- !u!1 &132101782
@@ -5591,7 +5591,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: -20}
+  m_SizeDelta: {x: -10, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &703996186
 MonoBehaviour:
@@ -5613,7 +5613,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 464032c9f68a9b74f96ab991a964ed49, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0588abc346f2dd944bdd9a10405a36b2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8421,15 +8421,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SellableBoosters:
-  - ObtainChance: 76
+  - ObtainChance: 30
     Booster: {fileID: 11400000, guid: f43f2e10f57e0dc4e9544f9f0595063f, type: 2}
-  - ObtainChance: 15
+  - ObtainChance: 24
     Booster: {fileID: 11400000, guid: 85b0cdaf627c1df43a143f1b3cb00fa7, type: 2}
-  - ObtainChance: 5
+  - ObtainChance: 21
     Booster: {fileID: 11400000, guid: 1b8c824c30c45914fba0c803e3ca93e7, type: 2}
-  - ObtainChance: 3
+  - ObtainChance: 15
     Booster: {fileID: 11400000, guid: 177e22dfa11bd884ba9f545b6ebf3f40, type: 2}
-  - ObtainChance: 1
+  - ObtainChance: 10
     Booster: {fileID: 11400000, guid: 723cd4f20641d284989b0083a250e475, type: 2}
   BuyPrice: 1000
 --- !u!4 &1050391280
@@ -11023,10 +11023,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1478059987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: -20}
+  m_SizeDelta: {x: 35, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1293689638
 MonoBehaviour:
@@ -11048,7 +11048,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 464032c9f68a9b74f96ab991a964ed49, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce2f00401dd4cac4098e71b2ad0625a6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12060,8 +12060,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: -20}
+  m_AnchoredPosition: {x: 2.5, y: 0}
+  m_SizeDelta: {x: -5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1384021122
 MonoBehaviour:
@@ -12083,7 +12083,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 464032c9f68a9b74f96ab991a964ed49, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da65fbe0e93376c4098fc0b2f64f8a4e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16549,7 +16549,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: -20}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1776053410
 MonoBehaviour:
@@ -16571,7 +16571,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 464032c9f68a9b74f96ab991a964ed49, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ddf51181f855334e98fe9674d21a1f9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17413,7 +17413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93da18c058ee6df4cbdb27edb2dc1122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetFrameRate: 60
+  _targetFrameRate: 120
 --- !u!1 &1902209597
 GameObject:
   m_ObjectHideFlags: 0

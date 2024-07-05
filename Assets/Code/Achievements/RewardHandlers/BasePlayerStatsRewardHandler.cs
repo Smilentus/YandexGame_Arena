@@ -1,8 +1,8 @@
-using Dimasyechka.Code.PlayerSystem;
 using System.Collections.Generic;
+using Dimasyechka.Code.PlayerSystem;
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Achievements.RewardHandlers
 {
     public abstract class RewardHandler : ScriptableObject
     {

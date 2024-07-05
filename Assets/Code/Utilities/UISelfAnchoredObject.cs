@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Utilities
 {
     public class UISelfAnchoredObject : MonoBehaviour
     {

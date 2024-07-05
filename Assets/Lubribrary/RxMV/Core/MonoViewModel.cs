@@ -43,9 +43,13 @@ namespace Dimasyechka.Lubribrary.RxMV.Core
             _preZenjectedModel = model;
         }
 
+        protected virtual void OnPreInstall() { }
+
         public void SetupModel(T model)
         {
             RemoveModel();
+
+            OnPreInstall();
 
             if (!_allowNullModels)
             {

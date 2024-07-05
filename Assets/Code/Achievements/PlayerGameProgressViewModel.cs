@@ -6,7 +6,7 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Achievements
 {
     public class PlayerGameProgressViewModel : MonoViewModel<PlayerGameProgress>
     {

@@ -1,9 +1,9 @@
-using Dimasyechka.Code.BoostingSystem;
-using Dimasyechka.Code.PlayerSystem;
 using System.Collections.Generic;
+using Dimasyechka.Code.Achievements.RewardHandlers;
+using Dimasyechka.Code.BoostingSystem;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.PlayerSystem
 {
     public class RuntimePlayerUpgrader
     {

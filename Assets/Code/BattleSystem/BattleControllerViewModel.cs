@@ -1,4 +1,4 @@
-using Dimasyechka.Code.BattleSystem;
+using Dimasyechka.Code.HealthSystem;
 using Dimasyechka.Lubribrary.RxMV.Core;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Extensions;
@@ -6,7 +6,7 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.BattleSystem
 {
     public class BattleControllerViewModel : MonoViewModel<BattleController>
     {

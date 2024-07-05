@@ -27,19 +27,20 @@ namespace Dimasyechka.Code.BoostingSystem
         }
 
 
-        public void AddBooster(PlayerBooster booster)
+        public void AddBooster(PlayerBooster booster, bool autoEquip = true)
         {
-            AddBooster(booster.Guid);
+            AddBooster(booster.Guid, autoEquip);
         }
 
-        public void AddBooster(string boosterGuid)
+        public void AddBooster(string boosterGuid, bool autoEquip = true)
         {
             _availableBoosters.Add(new ObtainedBooster()
             {
                 Guid = boosterGuid
             });
 
-            TryEquipBooster(boosterGuid);
+            if (autoEquip)
+                TryEquipBooster(boosterGuid);
 
             onAvailableBoostersChanged?.Invoke();
         }
@@ -106,7 +107,7 @@ namespace Dimasyechka.Code.BoostingSystem
 
             if (_usedBoosters[slotIndex] != null)
             {
-                AddBooster(_usedBoosters[slotIndex].Guid);
+                AddBooster(_usedBoosters[slotIndex].Guid, false);
 
                 _usedBoosters[slotIndex] = null;
 

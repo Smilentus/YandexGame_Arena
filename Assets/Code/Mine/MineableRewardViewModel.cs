@@ -1,10 +1,9 @@
-using Dimasyechka.Code.Mine;
 using Dimasyechka.Lubribrary.RxMV.Core;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
 using UniRx;
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Mine
 {
     public class MineableRewardViewModel : MonoViewModel<MineableItem>
     {

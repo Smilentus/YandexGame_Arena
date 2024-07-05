@@ -1,11 +1,15 @@
+using System;
 using Dimasyechka.Code.HealthSystem;
 using UniRx;
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.BattleSystem
 {
     public class DamageComponent : MonoBehaviour
     {
+        public event Action onAttack;
+
+
         public ReactiveProperty<double> Damage = new ReactiveProperty<double>();
 
 
@@ -30,7 +34,10 @@ namespace Dimasyechka
 
             if (other.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
+                onAttack?.Invoke();
+
                 _duration.StartTimer();
+                
                 damageable.DamageInstance(Damage.Value);
             }
         }

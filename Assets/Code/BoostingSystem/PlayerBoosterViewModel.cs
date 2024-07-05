@@ -23,7 +23,7 @@ namespace Dimasyechka.Code.BoostingSystem
         public ReactiveProperty<Color> IconColor = new ReactiveProperty<Color>();
 
 
-        private void Awake()
+        protected override void OnPreInstall()
         {
             _allowNullModels = true;
         }

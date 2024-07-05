@@ -3,7 +3,7 @@ using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
 using UniRx;
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.FortuneWheel
 {
     public class FortuneWheelSlotViewModel : MonoViewModel<FortuneWheelSlotData>
     {

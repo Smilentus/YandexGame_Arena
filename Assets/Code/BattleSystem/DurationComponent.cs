@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.BattleSystem
 {
     public class DurationComponent : MonoBehaviour
     {

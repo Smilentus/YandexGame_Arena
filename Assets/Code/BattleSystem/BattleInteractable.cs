@@ -1,9 +1,8 @@
 using Dimasyechka.Code.BaseInteractionSystem;
-using Dimasyechka.Code.BattleSystem;
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.BattleSystem
 {
     public class BattleInteractable : BaseInteractable
     {

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using Dimasyechka.Code.Achievements.RewardHandlers;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Rewards
 {
     public class RewardsController
     {

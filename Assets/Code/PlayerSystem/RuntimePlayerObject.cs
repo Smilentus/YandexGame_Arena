@@ -18,18 +18,5 @@ namespace Dimasyechka.Code.PlayerSystem
 
             onPlayerStatsLoaded?.Invoke();
         }
-
-
-        private void Update()
-        {
-            if (Input.GetKey(KeyCode.G))
-            {
-                _runtimePlayerStats.BodyPower += 1000;
-                _runtimePlayerStats.LegsPower += 1000;
-                _runtimePlayerStats.HandsPower += 1000;
-
-                _runtimePlayerStats.Coins += 1000;
-            }
-        }
     }
 }

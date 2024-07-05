@@ -1,10 +1,9 @@
-using Dimasyechka.Code.PlayerSystem;
 using Dimasyechka.Lubribrary.RxMV.Core;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
 using UniRx;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.PlayerSystem
 {
     public class RuntimePlayerStatsViewModel : MonoViewModel<RuntimePlayerObject>
     {

@@ -1,13 +1,13 @@
+using System;
+using System.Collections;
 using Dimasyechka.Code.Utilities;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
 using Dimasyechka.Lubribrary.RxMV.UniRx.RxLink;
-using System;
-using System.Collections;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.ScreenFader
 {
     public class GeneralScreenFader : MonoBehaviour, IRxLinkable
     {

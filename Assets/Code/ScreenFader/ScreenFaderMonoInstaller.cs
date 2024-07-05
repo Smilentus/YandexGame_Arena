@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.ScreenFader
 {
     public class ScreenFaderMonoInstaller : MonoInstaller
     {

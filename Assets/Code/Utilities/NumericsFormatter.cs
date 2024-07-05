@@ -1,4 +1,4 @@
-namespace Dimasyechka
+namespace Dimasyechka.Code.Utilities
 {
     public static class NumericsFormatter
     {

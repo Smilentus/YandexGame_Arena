@@ -1,10 +1,11 @@
+using System;
+using Dimasyechka.Code.Utilities;
 using Dimasyechka.Code.Windows;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
-using System;
 using UniRx;
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.TrainingSystem
 {
     public class BaseTrainingViewModel : BaseShopViewModel<Transform>
     {       

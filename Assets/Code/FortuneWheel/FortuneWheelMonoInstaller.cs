@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.FortuneWheel
 {
     public class FortuneWheelMonoInstaller : MonoInstaller
     {

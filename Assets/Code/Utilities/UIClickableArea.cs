@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Utilities
 {
     public class UIClickableArea : MonoBehaviour, IPointerClickHandler
     {

@@ -65,8 +65,8 @@ namespace Dimasyechka.Code.BoostingSystem
             {
                 UsablePlayerBoosterViewModel viewModel = _factory.InstantiateForComponent(_usableBoosterViewModelPrefab.gameObject, _contentParent);
 
-                viewModel.SetupModel(Model.UsedBoosters[i]);
                 viewModel.SetSlotIndex(i);
+                viewModel.SetupModel(Model.UsedBoosters[i]);
             }
         }
     }

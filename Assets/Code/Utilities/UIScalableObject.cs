@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace Dimasyechka
+namespace Dimasyechka.Code.Utilities
 {
     public class UIScalableObject : MonoBehaviour
     {
