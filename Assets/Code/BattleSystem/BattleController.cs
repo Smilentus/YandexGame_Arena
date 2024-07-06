@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 using Zenject;
 
 namespace Dimasyechka.Code.BattleSystem
@@ -134,11 +135,19 @@ namespace Dimasyechka.Code.BattleSystem
         {
             Bounds bounds = _spawnBounds.GetComponent<Renderer>().bounds;
 
-            return new Vector3(
-                UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
-                0,
-                UnityEngine.Random.Range(bounds.min.z, bounds.max.z)
-            );
+
+            float x = UnityEngine.Random.Range(bounds.min.x, bounds.max.x);
+            float y = 0;  
+            float z = UnityEngine.Random.Range(bounds.min.z, bounds.max.z);
+
+            Ray ray = new Ray(new Vector3(x, 100, z), Vector3.down);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, 1000))
+            {
+                y = hit.point.y;
+            }
+
+            return new Vector3(x, y, z);
         }
 
 
