@@ -1,10 +1,11 @@
 using Dimasyechka.Code.PlayerSystem;
 using Dimasyechka.Code.ShopSystem;
+using Dimasyechka.Code.Utilities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Experimental.AI;
 using Zenject;
 
 namespace Dimasyechka.Code.BattleSystem
@@ -46,16 +47,19 @@ namespace Dimasyechka.Code.BattleSystem
         private PlayerObjectTag _playerObjectTag;
         private RuntimeBattleCharacterFactory _factory;
         private RuntimePlayerUpgrader _playerUpgrader;
+        private PlayerBlocker _playerBlocker;
 
         [Inject]
         public void Construct(
             RuntimePlayerObject runtimePlayerObject,
+            PlayerBlocker playerBlocker,
             RuntimePlayerUpgrader playerUpgrader,
             PlayerObjectTag playerObjectTag,
             RuntimeBattleCharacterFactory factory)
         {
             _factory = factory;
 
+            _playerBlocker = playerBlocker;
             _playerUpgrader = playerUpgrader;
             _playerObjectTag = playerObjectTag;
             _runtimePlayerObject = runtimePlayerObject;
@@ -135,16 +139,32 @@ namespace Dimasyechka.Code.BattleSystem
         {
             Bounds bounds = _spawnBounds.GetComponent<Renderer>().bounds;
 
+            float x, y, z;
+            x = y = z = 0;
 
-            float x = UnityEngine.Random.Range(bounds.min.x, bounds.max.x);
-            float y = 0;  
-            float z = UnityEngine.Random.Range(bounds.min.z, bounds.max.z);
+            int i = 0;
+            Ray ray;
 
-            Ray ray = new Ray(new Vector3(x, 100, z), Vector3.down);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, 1000))
+            while (i < 10)
             {
-                y = hit.point.y;
+                i++;
+
+                x = UnityEngine.Random.Range(bounds.min.x, bounds.max.x);
+                y = 0;
+                z = UnityEngine.Random.Range(bounds.min.z, bounds.max.z);
+
+                ray = new Ray(new Vector3(x, 100, z), Vector3.down);
+
+                if (Physics.Raycast(ray, out RaycastHit hit, 1000))
+                {
+                    if (hit.collider.tag.Equals("Enemy"))
+                    {
+                        continue;
+                    }
+
+                    y = hit.point.y;
+                    break;
+                }
             }
 
             return new Vector3(x, y, z);
@@ -157,7 +177,8 @@ namespace Dimasyechka.Code.BattleSystem
 
             onPlayerLose?.Invoke();
 
-            EndBattle();
+            StopAllCoroutines();
+            StartCoroutine(EndBattleWithDelay(3));
         }
 
         private void OnEnemyDead()
@@ -172,7 +193,8 @@ namespace Dimasyechka.Code.BattleSystem
 
                 onPlayerWin?.Invoke();
 
-                EndBattle();
+                StopAllCoroutines();
+                StartCoroutine(EndBattleWithDelay(3));
             }
         }
 
@@ -209,6 +231,18 @@ namespace Dimasyechka.Code.BattleSystem
             }
 
             _enemyObjects.Clear();
+        }
+
+
+        private IEnumerator EndBattleWithDelay(float delaySeconds)
+        {
+            _playerBlocker.BlockPlayer();
+
+            yield return new WaitForSecondsRealtime(delaySeconds);
+
+            _playerBlocker.UnBlockPlayer();
+
+            EndBattle();
         }
     }
 

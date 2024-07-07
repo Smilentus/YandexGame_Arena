@@ -50,6 +50,8 @@ MonoBehaviour:
     value: 
   _health: {fileID: 7534975950714701205}
   _damage: {fileID: 5324142072966095591}
+  _animator: {fileID: 0}
+  _useDeadAnimation: 0
 --- !u!1 &5687409010760476221
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,13 +2,13 @@ namespace Dimasyechka.Code.PlayerSystem
 {
     public class RuntimePlayerStats
     {
-        public string PlayerPrefix;
+        public string PlayerPrefix = "Неизвестный";
 
         public double MaxHealth
         {
             get
             {
-                if (BodyPower <= 10)
+                if (BodyPower < 10)
                 {
                     return 10;
                 }
@@ -21,7 +21,7 @@ namespace Dimasyechka.Code.PlayerSystem
         {
             get
             {
-                if (HandsPower <= 0)
+                if (HandsPower < 1)
                 {
                     return 1;
                 }
@@ -30,36 +30,19 @@ namespace Dimasyechka.Code.PlayerSystem
             }
         }
 
-        public double Fatigue;
-        public double MaxFatigue;
+        public double Fatigue = 0;
+        public double MaxFatigue = 100;
 
         public double TotalPower => BodyPower + HandsPower + LegsPower;
 
-        public double BodyPower;
-        public double HandsPower;
-        public double LegsPower;
+        public double BodyPower = 0;
+        public double HandsPower = 0;
+        public double LegsPower = 0;
 
 
-        public uint Coins;
+        public uint Coins = 100000;
 
 
-        public bool HasPickaxe;
-
-
-        public RuntimePlayerStats()
-        {
-            PlayerPrefix = "Неизвестный";
-
-            Coins = 100000;
-
-            Fatigue = 0;
-            MaxFatigue = 100;
-
-            BodyPower = 0;
-            HandsPower = 0;
-            LegsPower = 0;
-
-            HasPickaxe = false;
-        }
+        public bool HasPickaxe = false;
     }
 }

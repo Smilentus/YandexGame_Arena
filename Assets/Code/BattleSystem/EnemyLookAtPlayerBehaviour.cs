@@ -1,3 +1,4 @@
+using Dimasyechka.Code.HealthSystem;
 using Dimasyechka.Code.PlayerSystem;
 using UnityEngine;
 using Zenject;
@@ -6,6 +7,10 @@ namespace Dimasyechka.Code.BattleSystem
 {
     public class EnemyLookAtPlayerBehaviour : MonoBehaviour
     {
+        [SerializeField]
+        private HealthComponent _health;
+
+
         [SerializeField]
         private float _rotationSpeed = 3f;
 
@@ -24,6 +29,8 @@ namespace Dimasyechka.Code.BattleSystem
 
         private void FixedUpdate()
         {
+            if (_health != null && !_health.IsAlive()) return;
+
             AimToPlayer();
             RotateToPlayer();
         }

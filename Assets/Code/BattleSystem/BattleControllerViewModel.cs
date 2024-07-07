@@ -27,6 +27,13 @@ namespace Dimasyechka.Code.BattleSystem
         public ReactiveProperty<int> EnemiesLeft = new ReactiveProperty<int>();
 
 
+        [RxAdaptableProperty]
+        public ReactiveProperty<bool> PlayerWinPanelEnabled = new ReactiveProperty<bool>();
+
+        [RxAdaptableProperty]
+        public ReactiveProperty<bool> PlayerLosePanelEnabled = new ReactiveProperty<bool>();
+
+
         [Inject]
         public void Construct(BattleController battleController)
         {
@@ -60,12 +67,12 @@ namespace Dimasyechka.Code.BattleSystem
 
         private void OnPlayerLose()
         {
-
+            PlayerLosePanelEnabled.Value = true;
         }
 
         private void OnPlayerWin()
         {
-
+            PlayerWinPanelEnabled.Value = true;
         }
 
 
@@ -79,6 +86,9 @@ namespace Dimasyechka.Code.BattleSystem
 
         private void OnBattleEnded()
         {
+            PlayerWinPanelEnabled.Value = false;
+            PlayerLosePanelEnabled.Value = false;
+
             IsBattleInProgress.Value = false;
         }
     }

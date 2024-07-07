@@ -1,7 +1,7 @@
-using System;
 using Dimasyechka.Code.HealthSystem;
 using Dimasyechka.Lubribrary.RxMV.UniRx.Attributes;
 using Dimasyechka.Lubribrary.RxMV.UniRx.RxLink;
+using System;
 using UniRx;
 using UnityEngine;
 
@@ -32,7 +32,16 @@ namespace Dimasyechka.Code.BattleSystem
         public Animator AnimatorReference => _animator;
 
 
+        [SerializeField]
+        private bool _useDeadAnimation = true;
+
+
+        [SerializeField]
+        private ParticleSystem _deadParticles;
+
+
         private bool _isDead;
+        private static readonly int IsDead = Animator.StringToHash("IsDead");
 
 
         private void Awake()
@@ -47,12 +56,23 @@ namespace Dimasyechka.Code.BattleSystem
             _damage.onAttack -= OnAttackCallback;
         }
 
-        
-        protected virtual void OnHealthBelowZero() 
+
+        protected virtual void OnHealthBelowZero()
         {
             if (_isDead) return;
 
             _isDead = true;
+
+            if (_animator != null && _useDeadAnimation)
+            {
+                _animator.SetBool(IsDead, true);
+            }
+
+            if (_deadParticles != null)
+            {
+                _deadParticles.Play();
+            }
+
             _damage.ToggleComponent(false);
 
             onDead?.Invoke();

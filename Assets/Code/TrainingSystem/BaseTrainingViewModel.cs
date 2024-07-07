@@ -37,11 +37,11 @@ namespace Dimasyechka.Code.TrainingSystem
 
         private float _runtimeClickPower = 0;
 
-        private float _clickPower = 0.15f;
+        private float _clickPower = 0.22f;
         private float _upgradePower = 1f;
 
-        private float _deceleratePower = 0.05f;
-        private float _nulifyPower = 2f;
+        private float _deceleratePower = 0.07f;
+        private float _nulifyPower = 2.5f;
 
         
         public override void OnShow()

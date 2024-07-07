@@ -45,9 +45,6 @@ namespace Dimasyechka.Code.PlayerControlSystems.TPSAssets
 
             _lookAction.action.Enable();
             _pressForLookAction.action.Enable();
-            
-            //_jumpAction.action.Enable();
-            //_sprintAction.action.Enable();
         }
 
 

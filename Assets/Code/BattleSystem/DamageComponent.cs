@@ -34,6 +34,8 @@ namespace Dimasyechka.Code.BattleSystem
 
             if (other.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
+                if (!damageable.IsAlive()) return;
+
                 onAttack?.Invoke();
 
                 _duration.StartTimer();

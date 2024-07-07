@@ -23,6 +23,8 @@ namespace Dimasyechka.Code.HealthSystem
             HealthRatio.Value = (float)Health.Value / (float)MaxHealth.Value;
         }
 
+        public bool IsAlive() => Health.Value > 0;
+
         public void DamageInstance(double damage)
         {
             if (_isHealthBelowZero) return;
