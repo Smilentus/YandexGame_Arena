@@ -52,6 +52,7 @@ MonoBehaviour:
   _damage: {fileID: 5324142072966095591}
   _animator: {fileID: 0}
   _useDeadAnimation: 0
+  _deadParticles: {fileID: 0}
 --- !u!1 &5687409010760476221
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +137,6 @@ GameObject:
   - component: {fileID: 5927185935272412519}
   - component: {fileID: 3795506945402445290}
   - component: {fileID: 5324142072966095591}
-  - component: {fileID: 1615293051742433682}
   m_Layer: 0
   m_Name: DamageableSphere
   m_TagString: Untagged
@@ -154,7 +154,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1529718362616156485}
@@ -205,7 +205,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5324142072966095591
 MonoBehaviour:
@@ -221,19 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage:
     value: 0
+  _attackRadius: 1
   _damageTag: Enemy
-  _duration: {fileID: 1615293051742433682}
---- !u!114 &1615293051742433682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8855424359172015064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 235cdf6a14daefc4cbfcad8d27a71b44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _duration: 1
-  _maxDuration: 1
+  _attackDelaySeconds: 0.05
+  _attackCooldownSeconds: 1

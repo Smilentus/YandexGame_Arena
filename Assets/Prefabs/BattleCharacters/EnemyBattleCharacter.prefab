@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5465208902474814807}
   - component: {fileID: 1106758478801842635}
   - component: {fileID: 8387920113766558161}
-  - component: {fileID: 5842430106606249018}
+  - component: {fileID: 6250124005473272035}
+  - component: {fileID: 4650981742273688173}
   m_Layer: 0
   m_Name: DamageableSphere
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8843160993113125033}
@@ -81,7 +82,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8387920113766558161
 MonoBehaviour:
@@ -97,9 +98,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage:
     value: 0
+  _attackRadius: 1
   _damageTag: Player
-  _duration: {fileID: 5842430106606249018}
---- !u!114 &5842430106606249018
+  _attackDelaySeconds: 0.25
+  _attackCooldownSeconds: 2
+--- !u!114 &6250124005473272035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,11 +111,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 2258530554618071692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 235cdf6a14daefc4cbfcad8d27a71b44, type: 3}
+  m_Script: {fileID: 11500000, guid: 34a09a23502a88642a80238fe014252c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 2
-  _maxDuration: 2
+  Damage:
+    value: 0
+  _worldFloatingObjectPrefab: {fileID: 533772985895394802, guid: 8fbeb0a8981d3e8438849dd85dcf4948, type: 3}
+  _contentParent: {fileID: 1090752152062932277}
+--- !u!114 &4650981742273688173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2258530554618071692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf5f7f57c442c04196532b581b8806d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: {fileID: 8387920113766558161}
+  _viewModel: {fileID: 6250124005473272035}
 --- !u!1 &2649932949724246400
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +533,7 @@ Transform:
   - {fileID: 867193565008502682}
   - {fileID: 1191003899514003112}
   - {fileID: 2474088150117750388}
+  - {fileID: 1090752152062932277}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4542161609122927729
@@ -5380,6 +5400,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &9199374815749366898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1090752152062932277}
+  m_Layer: 0
+  m_Name: WorldFloatingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1090752152062932277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9199374815749366898}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8843160993113125033}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4721065851023095684
 PrefabInstance:
   m_ObjectHideFlags: 0

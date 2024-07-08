@@ -12,6 +12,12 @@ namespace Dimasyechka.Code.BattleSystem
         public override void InstallBindings()
         {
             BindBattleController();
+            BindWorldFloatingObject();
+        }
+
+        private void BindWorldFloatingObject()
+        {
+            Container.Bind<WorldFloatingObjectFactory>().FromNew().AsSingle();
         }
 
         private void BindBattleController()

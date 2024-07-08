@@ -47,13 +47,13 @@ namespace Dimasyechka.Code.BattleSystem
         private void Awake()
         {
             _health.onHealthBelowZero += OnHealthBelowZero;
-            _damage.onAttack += OnAttackCallback;
+            _damage.onStrike += OnStrikeCallback;
         }
 
         private void OnDestroy()
         {
             _health.onHealthBelowZero -= OnHealthBelowZero;
-            _damage.onAttack -= OnAttackCallback;
+            _damage.onStrike -= OnStrikeCallback;
         }
 
 
@@ -96,7 +96,7 @@ namespace Dimasyechka.Code.BattleSystem
         }
 
 
-        private void OnAttackCallback()
+        private void OnStrikeCallback()
         {
             if (_animator != null)
             {

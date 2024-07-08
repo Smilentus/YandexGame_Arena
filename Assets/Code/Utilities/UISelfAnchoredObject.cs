@@ -1,4 +1,6 @@
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Dimasyechka.Code.Utilities
@@ -34,6 +36,7 @@ namespace Dimasyechka.Code.Utilities
         }
     }
 
+#if UNITY_EDITOR
     [CustomEditor(typeof(UISelfAnchoredObject))]
     public class UISelfAnchoredObjectEditor : Editor
     {
@@ -47,4 +50,5 @@ namespace Dimasyechka.Code.Utilities
             }
         }
     }
+#endif
 }

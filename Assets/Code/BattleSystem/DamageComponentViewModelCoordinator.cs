@@ -13,6 +13,8 @@ namespace Dimasyechka.Code.BattleSystem
 
         private void Awake()
         {
+            if (_viewModel == null || _damage == null) return;
+
             _viewModel.SetupModel(_damage);
         }
     }
