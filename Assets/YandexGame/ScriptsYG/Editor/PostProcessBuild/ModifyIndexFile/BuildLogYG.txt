@@ -1,2 +1,2 @@
 Build path: D:/С диска С/Projects/YandexGame_Arena/Builds
-Build number: 4
+Build number: 6

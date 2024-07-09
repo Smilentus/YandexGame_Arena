@@ -16,6 +16,6 @@ MonoBehaviour:
   Title: "\u0420\u0443\u043A\u0438"
   Description: 
   Icon: {fileID: 21300000, guid: da65fbe0e93376c4098fc0b2f64f8a4e, type: 3}
-  RandomWeight: 10
-  MinValue: 100
-  MaxValue: 1000
+  RandomWeight: 5
+  MinValue: 50
+  MaxValue: 100

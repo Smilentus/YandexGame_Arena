@@ -25,6 +25,9 @@ namespace Dimasyechka.Code.FortuneWheel
         public int CurrentSlots => _currentSlots;
 
 
+        private int _fortuneWheelLevel = 0;
+
+
         private PrizesWarehouse _warehouse;
         private FortuneWheelPrizeGiver _prizeGiver;
 
@@ -59,20 +62,18 @@ namespace Dimasyechka.Code.FortuneWheel
 
         private void Load()
         {
-            Debug.Log("Load Fortune Wheel");
-
             SetNewFortuneWheel();
         }
 
         private void Save()
         {
-            Debug.Log("Save Fortune Wheel");
+
         }
 
 
         private void SaveSpinTime()
         {
-            Debug.Log("Save Spin Time");
+
         }
 
 
@@ -80,6 +81,8 @@ namespace Dimasyechka.Code.FortuneWheel
         {
             TimeFromLastSpin.Value = TimeSpan.FromSeconds(0);
             IsSpinAvailable.Value = true;
+
+            _fortuneWheelLevel++;
 
             GeneratePrizes();
         }
@@ -105,7 +108,7 @@ namespace Dimasyechka.Code.FortuneWheel
                         {
                             Prize = prize,
                             SlotIndex = i,
-                            Value = UnityEngine.Random.Range(prize.MinValue, prize.MaxValue)
+                            Value = UnityEngine.Random.Range(prize.MinValue * _fortuneWheelLevel, prize.MaxValue * _fortuneWheelLevel)
                         };
 
                         _prizes.Add(slotData);

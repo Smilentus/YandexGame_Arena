@@ -175,6 +175,7 @@ namespace Dimasyechka.Code.BattleSystem
         {
             _instantiatedPlayerCharacter.onDead -= OnPlayerLost;
 
+            _isBattleInProgress = false;
             onPlayerLose?.Invoke();
 
             StopAllCoroutines();
@@ -191,6 +192,7 @@ namespace Dimasyechka.Code.BattleSystem
 
                 GiveRewardAfterBattle();
 
+                _isBattleInProgress = false;
                 onPlayerWin?.Invoke();
 
                 StopAllCoroutines();
