@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Dimasyechka.Code.Mine
 {
-    public class MineMiniGameViewModel : BaseShopViewModel<MineMiniGame>
+    public class MineMiniGameViewModel : BaseWindowViewModel<MineMiniGame>
     {
         [SerializeField]
         private MineableRewardViewModel _mineableRewardViewModel;

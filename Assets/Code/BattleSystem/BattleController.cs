@@ -17,10 +17,15 @@ namespace Dimasyechka.Code.BattleSystem
 
         public event Action onBattleStarted;
         public event Action onBattleEnded;
+        public event Action onBattleLeft;
 
 
         public ReactiveProperty<TimeSpan> BattleTimeLeft = new ReactiveProperty<TimeSpan>();
         public ReactiveProperty<int> EnemiesInBattle = new ReactiveProperty<int>();
+
+
+        [SerializeField]
+        private List<GameObject> _battleInteractableObjects = new List<GameObject>();
 
 
         [SerializeField]
@@ -81,15 +86,17 @@ namespace Dimasyechka.Code.BattleSystem
 
         public void StartBattle(BattleSettings battleSettings)
         {
+            ToggleBattleInteractables(false);
+
             _isBattleInProgress = true;
 
             _lastBattleSettings = battleSettings;
 
             BattleTimeLeft.Value = TimeSpan.FromSeconds(battleSettings.BattleTimeSeconds);
-            EnemiesInBattle.Value = battleSettings.EnemyProfiles.Length;
+            EnemiesInBattle.Value = battleSettings.EnemiesInBattle;
 
             SetupPlayer();
-            SpawnEnemies(battleSettings.EnemyProfiles);
+            SpawnEnemies(battleSettings.EnemyProfile, battleSettings.EnemiesInBattle);
 
             onBattleStarted?.Invoke();
         }
@@ -113,11 +120,11 @@ namespace Dimasyechka.Code.BattleSystem
             _instantiatedPlayerCharacter.onDead += OnPlayerLost;
         }
 
-        private void SpawnEnemies(BattleCharacterProfile[] profiles)
+        private void SpawnEnemies(BattleCharacterProfile profile, int enemies)
         {
-            for (int i = 0; i < profiles.Length; i++)
+            for (int i = 0; i < enemies; i++)
             {
-                CreateEnemy(profiles[i]);
+                CreateEnemy(profile);
             }
         }
 
@@ -179,7 +186,7 @@ namespace Dimasyechka.Code.BattleSystem
             onPlayerLose?.Invoke();
 
             StopAllCoroutines();
-            StartCoroutine(EndBattleWithDelay(3));
+            StartCoroutine(EndBattleWithDelay(2));
         }
 
         private void OnEnemyDead()
@@ -196,13 +203,13 @@ namespace Dimasyechka.Code.BattleSystem
                 onPlayerWin?.Invoke();
 
                 StopAllCoroutines();
-                StartCoroutine(EndBattleWithDelay(3));
+                StartCoroutine(EndBattleWithDelay(2));
             }
         }
 
         private void GiveRewardAfterBattle()
         {
-            _playerUpgrader.AddCoins(100);
+            _playerUpgrader.AddCoins(_lastBattleSettings.WinCoins);
         }
 
 
@@ -218,6 +225,15 @@ namespace Dimasyechka.Code.BattleSystem
             _lastBattleSettings = null;
 
             onBattleEnded?.Invoke();
+
+            ToggleBattleInteractables(true);
+        }
+
+        public void LeaveBattle()
+        {
+            EndBattle();
+
+            onBattleLeft?.Invoke();
         }
 
         private void DestroyBattlePlayer()
@@ -245,6 +261,15 @@ namespace Dimasyechka.Code.BattleSystem
             _playerBlocker.UnBlockPlayer();
 
             EndBattle();
+        }
+
+
+        private void ToggleBattleInteractables(bool value)
+        {
+            foreach (GameObject go in _battleInteractableObjects)
+            {
+                go.SetActive(value);
+            }
         }
     }
 

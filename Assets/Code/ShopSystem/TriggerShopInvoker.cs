@@ -10,23 +10,23 @@ namespace Dimasyechka.Code.ShopSystem
         private BoosterShopController _shopController;
 
 
-        private BoosterShopViewModel _boosterShopViewModel;
+        private BoosterWindowViewModel _boosterWindowViewModel;
 
         [Inject]
-        public void Construct(BoosterShopViewModel boosterShopViewModel)
+        public void Construct(BoosterWindowViewModel boosterWindowViewModel)
         {
-            _boosterShopViewModel = boosterShopViewModel;
+            _boosterWindowViewModel = boosterWindowViewModel;
         }
 
 
         public override void OnInteractionStarted()
         {
-            _boosterShopViewModel.SetShop(_shopController);
+            _boosterWindowViewModel.SetShop(_shopController);
         }
 
         public override void OnInteractionEnded()
         {
-            _boosterShopViewModel.Hide();
+            _boosterWindowViewModel.Hide();
         }
     }
 }

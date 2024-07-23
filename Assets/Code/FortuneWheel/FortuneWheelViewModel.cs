@@ -10,7 +10,7 @@ namespace Dimasyechka.Code.FortuneWheel
 {
     // TODO: Слишком нагруженный класс, разбить на подклассы
     // TODO: Переделать, чтобы приз записывался сразу после нажатия и если что в случае ошибки - выдавался сразу же без анимации
-    public class FortuneWheelViewModel : BaseShopViewModel<FortuneWheel>
+    public class FortuneWheelViewModel : BaseWindowViewModel<FortuneWheel>
     {
         [RxAdaptableProperty]
         public ReactiveProperty<bool> IsSpinButtonEnabled = new ReactiveProperty<bool>();

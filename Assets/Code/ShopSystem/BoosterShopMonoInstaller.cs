@@ -7,7 +7,7 @@ namespace Dimasyechka.Code.ShopSystem
     public class BoosterShopMonoInstaller : MonoInstaller
     {
         [SerializeField]
-        private BoosterShopViewModel _boosterShopViewModel;
+        private BoosterWindowViewModel _boosterWindowViewModel;
 
         [SerializeField]
         private PlayerBoosterInteractionWindow _playerBoosterInteractionWindow;
@@ -26,7 +26,7 @@ namespace Dimasyechka.Code.ShopSystem
 
         private void BindBoosterShopViewModel()
         {
-            Container.Bind<BoosterShopViewModel>().FromInstance(_boosterShopViewModel).AsSingle();
+            Container.Bind<BoosterWindowViewModel>().FromInstance(_boosterWindowViewModel).AsSingle();
             Container.Bind<ObtainedPlayerBoosterViewModelFactory>().FromNew().AsSingle();
             Container.Bind<PlayerUsableBoosterViewModelFactory>().FromNew().AsSingle();
         }

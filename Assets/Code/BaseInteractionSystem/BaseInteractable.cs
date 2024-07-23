@@ -17,6 +17,8 @@ namespace Dimasyechka.Code.BaseInteractionSystem
 
         public void StartInteraction()
         {
+            if (!IsInteractable) return;
+
             if (_isInteractionInProgress) return;
 
             _isInteractionInProgress = true;

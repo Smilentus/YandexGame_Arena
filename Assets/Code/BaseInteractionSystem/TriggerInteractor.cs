@@ -50,6 +50,8 @@ namespace Dimasyechka.Code.BaseInteractionSystem
 
                     _collidedBaseInteractable = interactableObject;
 
+                    if (!interactableObject.IsInteractable) return;
+
                     onTriggerEntered?.Invoke(_collidedBaseInteractable);
                 }
             }

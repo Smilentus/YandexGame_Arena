@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Dimasyechka.Code.TrainingSystem
 {
-    public class BaseTrainingViewModel : BaseShopViewModel<Transform>
+    public class BaseTrainingViewModel : BaseWindowViewModel<Transform>
     {       
         public event Action onTrainingCompleted;
 

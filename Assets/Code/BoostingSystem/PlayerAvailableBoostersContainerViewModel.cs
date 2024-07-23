@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Dimasyechka.Code.BoostingSystem
 {
-    public class PlayerAvailableBoostersContainerViewModel : BaseShopViewModel<PlayerBoostersContainer>
+    public class PlayerAvailableBoostersContainerViewModel : BaseWindowViewModel<PlayerBoostersContainer>
     {
         [SerializeField]
         private PlayerUsableBoostersContainerViewModel _usableBoostersViewModel;

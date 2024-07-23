@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Dimasyechka.Code.BoostingSystem
 {
-    public class PlayerBoosterInteractionWindow : BaseShopViewModel<PlayerBooster>
+    public class PlayerBoosterInteractionWindow : BaseWindowViewModel<PlayerBooster>
     {
         [RxAdaptableProperty]
         public ReactiveProperty<bool> IsEquipInteraction = new ReactiveProperty<bool>();

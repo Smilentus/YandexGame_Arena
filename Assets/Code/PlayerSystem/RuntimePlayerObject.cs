@@ -12,6 +12,20 @@ namespace Dimasyechka.Code.PlayerSystem
         public RuntimePlayerStats RuntimePlayerStats => _runtimePlayerStats;
 
 
+        private void Awake()
+        {
+            // Temporal load
+            RuntimePlayerStats stats = new RuntimePlayerStats();
+
+
+        }
+
+        private void OnDestroy()
+        {
+            // Temporal save
+        }
+
+
         public void LoadPlayerStats(RuntimePlayerStats loadablePlayerStats)
         {
             _runtimePlayerStats = loadablePlayerStats;

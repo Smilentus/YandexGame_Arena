@@ -8,11 +8,15 @@ namespace Dimasyechka.Code.BattleSystem
         [SerializeField]
         private BattleController _battleController;
 
+        [SerializeField]
+        private EnemyInspectionViewModel _enemyInspectionViewModel;
+
 
         public override void InstallBindings()
         {
             BindBattleController();
             BindWorldFloatingObject();
+            BindEnemyInspectionViewModel();
         }
 
         private void BindWorldFloatingObject()
@@ -24,6 +28,11 @@ namespace Dimasyechka.Code.BattleSystem
         {
             Container.Bind<BattleController>().FromInstance(_battleController).AsSingle();
             Container.Bind<RuntimeBattleCharacterFactory>().FromNew().AsSingle();
+        }
+
+        private void BindEnemyInspectionViewModel()
+        {
+            Container.Bind<EnemyInspectionViewModel>().FromInstance(_enemyInspectionViewModel).AsSingle();
         }
     }
 }

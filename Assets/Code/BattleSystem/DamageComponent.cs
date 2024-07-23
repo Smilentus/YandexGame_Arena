@@ -75,11 +75,15 @@ namespace Dimasyechka.Code.BattleSystem
 
         private void TryAttack()
         {
+            if (!_isEnabled) return;
+
             _attackDelayDurationHandler.StartTimer();
         }
 
         private void OnAttackDelayDurationPassed()
         {
+            if (!_isEnabled) return;
+
             CollectDamageablesAround();
             _attackCooldownHandler.StartTimer();
         }
@@ -87,6 +91,8 @@ namespace Dimasyechka.Code.BattleSystem
 
         private void CollectDamageablesAround()
         {
+            if (!_isEnabled) return;
+
             Collider[] colliders = Physics.OverlapSphere(this.transform.position, _attackRadius);
 
             int damageablesAround = 0;

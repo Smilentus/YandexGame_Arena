@@ -40,7 +40,7 @@ namespace Dimasyechka.Code.PlayerSystem
         public double LegsPower = 0;
 
 
-        public uint Coins = 100000;
+        public uint Coins = 0;
 
 
         public bool HasPickaxe = false;
