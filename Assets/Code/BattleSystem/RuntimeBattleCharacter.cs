@@ -40,6 +40,10 @@ namespace Dimasyechka.Code.BattleSystem
         private ParticleSystem _deadParticles;
 
 
+        [SerializeField]
+        private GameObject[] _deadToggleables;
+
+
         private bool _isDead;
         private static readonly int IsDead = Animator.StringToHash("IsDead");
 
@@ -74,6 +78,11 @@ namespace Dimasyechka.Code.BattleSystem
             }
 
             _damage.ToggleComponent(false);
+
+            foreach (GameObject go in _deadToggleables)
+            {
+                go.SetActive(false);
+            }
 
             onDead?.Invoke();
         }

@@ -1,5 +1,12 @@
+using Dimasyechka.Code.BoostingSystem.Trading;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Unity.Collections;
+using UnityEditor;
+using UnityEditor.U2D.Aseprite;
+using UnityEngine;
 using Zenject;
 
 namespace Dimasyechka.Code.BoostingSystem
@@ -24,6 +31,58 @@ namespace Dimasyechka.Code.BoostingSystem
         public void Construct(PlayerBoostersWarehouse warehouse)
         {
             _boostersWarehouse = warehouse;
+        }
+
+
+        public bool IsEnoughBoosters(string boosterGuid, int amount)
+        {
+            return (
+                GetAvailableBoostersCount(boosterGuid)
+                +
+                GetUsedBoostersCount(boosterGuid)
+            ) >= amount;
+        }
+
+        private int GetAvailableBoostersCount(string boosterGuid) => _availableBoosters
+            .Where(x => x != null)
+            .Count(x => x.Guid == boosterGuid);
+        
+        private int GetUsedBoostersCount(string boosterGuid) => _usedBoosters
+            .Where(x => x != null)
+            .Count(x => x.Guid == boosterGuid);
+
+
+        public void TradeBoosters(BoosterTradingRules tradingRules)
+        {
+            if (IsEnoughBoosters(tradingRules.InputBooster.Guid, tradingRules.InputAmount))
+            {
+                int availableBoosters = GetAvailableBoostersCount(tradingRules.InputBooster.Guid);
+                int usedBoosters = GetUsedBoostersCount(tradingRules.InputBooster.Guid);
+
+                if (availableBoosters < tradingRules.InputAmount)
+                {
+                    int leftOver = tradingRules.InputAmount - availableBoosters;
+
+                    for (int i = 0; i < leftOver; i++)
+                    {
+                        UnEquipBooster(tradingRules.InputBooster.Guid);
+                    }
+                }
+
+                for (int i = 0; i < tradingRules.InputAmount; i++)
+                {
+                    RemoveBooster(tradingRules.InputBooster.Guid);
+                }
+
+                for (int i = 0; i < tradingRules.OutputAmount; i++)
+                {
+                    AddBooster(tradingRules.OutputBooster.Guid);
+                }
+            }
+            else
+            {
+                Debug.Log($"Not enough boosters to trade");
+            }
         }
 
 
@@ -99,6 +158,20 @@ namespace Dimasyechka.Code.BoostingSystem
             }
 
             return false;
+        }
+
+        public void UnEquipBooster(string boosterGuid)
+        {
+            for (int i = 0; i < _usedBoosters.Length; i++)
+            {
+                if (_usedBoosters[i] == null) continue;
+
+                if (_usedBoosters[i].Guid == boosterGuid)
+                {
+                    UnEquipBooster(i);
+                    break;
+                }
+            }
         }
 
         public void UnEquipBooster(int slotIndex)

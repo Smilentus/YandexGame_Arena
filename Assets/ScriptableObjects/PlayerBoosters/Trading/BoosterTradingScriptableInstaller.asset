@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6c7311c511b0b4d83be21c2b1d9b9d, type: 3}
+  m_Name: BoosterTradingScriptableInstaller
+  m_EditorClassIdentifier: 
+  TradingRules:
+  - InspectorName: apple_booster x4 -> carrot_booster x1
+    InputBooster: {fileID: 11400000, guid: cc63868fcbfca734cb48686a00b10f8e, type: 2}
+    InputAmount: 4
+    OutputBooster: {fileID: 11400000, guid: ab3b7941955e387448507e81e200ecb6, type: 2}
+    OutputAmount: 1
+  - InspectorName: carrot_booster x4 -> melon_booster x1
+    InputBooster: {fileID: 11400000, guid: ab3b7941955e387448507e81e200ecb6, type: 2}
+    InputAmount: 4
+    OutputBooster: {fileID: 11400000, guid: 9e79090ab494efd4d90d06cd01387393, type: 2}
+    OutputAmount: 1
+  - InspectorName: melon_booster x4 -> potato_booster x1
+    InputBooster: {fileID: 11400000, guid: 9e79090ab494efd4d90d06cd01387393, type: 2}
+    InputAmount: 4
+    OutputBooster: {fileID: 11400000, guid: c79ede0f9340be44a91b25c9f5f1594c, type: 2}
+    OutputAmount: 1
+  - InspectorName: potato_booster x4 -> porkchop_booster x1
+    InputBooster: {fileID: 11400000, guid: c79ede0f9340be44a91b25c9f5f1594c, type: 2}
+    InputAmount: 4
+    OutputBooster: {fileID: 11400000, guid: c6fb57f3d9adab84da0a99ebecfe7192, type: 2}
+    OutputAmount: 1
+  - InspectorName: porkchop_booster x2 -> fish_booster x1
+    InputBooster: {fileID: 11400000, guid: c6fb57f3d9adab84da0a99ebecfe7192, type: 2}
+    InputAmount: 2
+    OutputBooster: {fileID: 11400000, guid: f43f2e10f57e0dc4e9544f9f0595063f, type: 2}
+    OutputAmount: 1
+  - InspectorName: fish_booster x6 -> rabbit_booster x1
+    InputBooster: {fileID: 11400000, guid: f43f2e10f57e0dc4e9544f9f0595063f, type: 2}
+    InputAmount: 6
+    OutputBooster: {fileID: 11400000, guid: 85b0cdaf627c1df43a143f1b3cb00fa7, type: 2}
+    OutputAmount: 1
+  - InspectorName: rabbit_booster x6 -> pumpkin_pie_booster x1
+    InputBooster: {fileID: 11400000, guid: 85b0cdaf627c1df43a143f1b3cb00fa7, type: 2}
+    InputAmount: 6
+    OutputBooster: {fileID: 11400000, guid: 1b8c824c30c45914fba0c803e3ca93e7, type: 2}
+    OutputAmount: 1
+  - InspectorName: pumpkin_pie_booster x6 -> honey_booster x1
+    InputBooster: {fileID: 11400000, guid: 1b8c824c30c45914fba0c803e3ca93e7, type: 2}
+    InputAmount: 6
+    OutputBooster: {fileID: 11400000, guid: 177e22dfa11bd884ba9f545b6ebf3f40, type: 2}
+    OutputAmount: 1
+  - InspectorName: honey_booster x6 -> cake_booster x1
+    InputBooster: {fileID: 11400000, guid: 177e22dfa11bd884ba9f545b6ebf3f40, type: 2}
+    InputAmount: 6
+    OutputBooster: {fileID: 11400000, guid: 723cd4f20641d284989b0083a250e475, type: 2}
+    OutputAmount: 1
+  - InspectorName: cake_booster x3 -> egg_booster x1
+    InputBooster: {fileID: 11400000, guid: 723cd4f20641d284989b0083a250e475, type: 2}
+    InputAmount: 3
+    OutputBooster: {fileID: 11400000, guid: af5f3e0dcc8829b4a9280acc5b539b0c, type: 2}
+    OutputAmount: 1
+  - InspectorName: egg_booster x8 -> tropical_fish_booster x1
+    InputBooster: {fileID: 11400000, guid: af5f3e0dcc8829b4a9280acc5b539b0c, type: 2}
+    InputAmount: 8
+    OutputBooster: {fileID: 11400000, guid: ba050652d409bb346be28f90540eede9, type: 2}
+    OutputAmount: 1
+  - InspectorName: tropical_fish_booster x8 -> cooked_beef_booster x1
+    InputBooster: {fileID: 11400000, guid: ba050652d409bb346be28f90540eede9, type: 2}
+    InputAmount: 8
+    OutputBooster: {fileID: 11400000, guid: f0ab4455e1af8a94bad82082d5bffb48, type: 2}
+    OutputAmount: 1
+  - InspectorName: cooked_beef_booster x8 -> glistering_melon_booster x1
+    InputBooster: {fileID: 11400000, guid: f0ab4455e1af8a94bad82082d5bffb48, type: 2}
+    InputAmount: 8
+    OutputBooster: {fileID: 11400000, guid: 41e416b787f501943a7cccec62d69c0d, type: 2}
+    OutputAmount: 1
+  - InspectorName: glistering_melon_booster x8 -> exp_bottle_booster x1
+    InputBooster: {fileID: 11400000, guid: 41e416b787f501943a7cccec62d69c0d, type: 2}
+    InputAmount: 8
+    OutputBooster: {fileID: 11400000, guid: 9a3299e27142b9e4b8b79f67d7f03760, type: 2}
+    OutputAmount: 1
+  - InspectorName: exp_bottle_booster x4 -> mixture_with_lazuli_booster x1
+    InputBooster: {fileID: 11400000, guid: 9a3299e27142b9e4b8b79f67d7f03760, type: 2}
+    InputAmount: 4
+    OutputBooster: {fileID: 11400000, guid: 536f995842aca6b418ec270e6c8bd2a9, type: 2}
+    OutputAmount: 1
+  - InspectorName: mixture_with_lazuli_booster x10 -> mixture_with_gold_booster x1
+    InputBooster: {fileID: 11400000, guid: 536f995842aca6b418ec270e6c8bd2a9, type: 2}
+    InputAmount: 10
+    OutputBooster: {fileID: 11400000, guid: 1551e417f9a1ca242a28ad20eff0b7a0, type: 2}
+    OutputAmount: 1
+  - InspectorName: mixture_with_gold_booster x10 -> mixture_with_amethyst_booster
+      x1
+    InputBooster: {fileID: 11400000, guid: 1551e417f9a1ca242a28ad20eff0b7a0, type: 2}
+    InputAmount: 10
+    OutputBooster: {fileID: 11400000, guid: a5f324d7a54ace3469d5599ebb23a51e, type: 2}
+    OutputAmount: 1
+  - InspectorName: mixture_with_amethyst_booster x10 -> mixture_with_emerald_booster
+      x1
+    InputBooster: {fileID: 11400000, guid: a5f324d7a54ace3469d5599ebb23a51e, type: 2}
+    InputAmount: 10
+    OutputBooster: {fileID: 11400000, guid: 70914d51299f07e4880900ab4601ab2b, type: 2}
+    OutputAmount: 1
+  - InspectorName: mixture_with_emerald_booster x10 -> mixture_with_diamond_booster
+      x1
+    InputBooster: {fileID: 11400000, guid: 70914d51299f07e4880900ab4601ab2b, type: 2}
+    InputAmount: 10
+    OutputBooster: {fileID: 11400000, guid: f7df5a4533776da42a138ea140d3b512, type: 2}
+    OutputAmount: 1
+  - InspectorName: mixture_with_diamond_booster x11 -> netherite_star x1
+    InputBooster: {fileID: 11400000, guid: f7df5a4533776da42a138ea140d3b512, type: 2}
+    InputAmount: 11
+    OutputBooster: {fileID: 11400000, guid: e7a4769ff7d6b5044b18fed14e09c936, type: 2}
+    OutputAmount: 1
+  - InspectorName: netherite_star x5 -> end_crystal x1
+    InputBooster: {fileID: 11400000, guid: e7a4769ff7d6b5044b18fed14e09c936, type: 2}
+    InputAmount: 5
+    OutputBooster: {fileID: 11400000, guid: c6fc83d1c9a6f1847936baaf5b072f99, type: 2}
+    OutputAmount: 1

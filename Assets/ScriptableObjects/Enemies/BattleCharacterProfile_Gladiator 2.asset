@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterPrefab: {fileID: 4542161609122927729, guid: f142450f50332e746b1767e61e8a0fa0, type: 3}
   CharacterName: "\u0414\u043E\u0431\u0440\u043E\u0432\u043E\u043B\u0435\u0446"
-  Health: 1000
-  Damage: 125
+  Health: 11000
+  Damage: 250

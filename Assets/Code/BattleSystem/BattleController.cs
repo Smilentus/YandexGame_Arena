@@ -157,26 +157,26 @@ namespace Dimasyechka.Code.BattleSystem
                 i++;
 
                 x = UnityEngine.Random.Range(bounds.min.x, bounds.max.x);
-                y = 0;
+                y = 0.5f;
                 z = UnityEngine.Random.Range(bounds.min.z, bounds.max.z);
 
-                ray = new Ray(new Vector3(x, 100, z), Vector3.down);
-
-                if (Physics.Raycast(ray, out RaycastHit hit, 1000))
+                if (Physics.BoxCast(
+                    new Vector3(x, 100, z), 
+                    new Vector3(1, 1, 1),
+                    Vector3.down, 
+                    out RaycastHit hit))
                 {
                     if (hit.collider.tag.Equals("Enemy"))
                     {
                         continue;
                     }
 
-                    y = hit.point.y;
                     break;
                 }
             }
 
             return new Vector3(x, y, z);
         }
-
 
         private void OnPlayerLost()
         {
@@ -209,7 +209,7 @@ namespace Dimasyechka.Code.BattleSystem
 
         private void GiveRewardAfterBattle()
         {
-            _playerUpgrader.AddCoins(_lastBattleSettings.WinCoins);
+            _playerUpgrader.AddCoins(_lastBattleSettings.WinCoins * (uint)_lastBattleSettings.EnemiesInBattle);
         }
 
 

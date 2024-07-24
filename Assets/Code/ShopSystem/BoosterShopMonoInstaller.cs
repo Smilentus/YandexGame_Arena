@@ -1,4 +1,5 @@
 using Dimasyechka.Code.BoostingSystem;
+using Dimasyechka.Code.BoostingSystem.Trading;
 using UnityEngine;
 using Zenject;
 
@@ -12,11 +13,23 @@ namespace Dimasyechka.Code.ShopSystem
         [SerializeField]
         private PlayerBoosterInteractionWindow _playerBoosterInteractionWindow;
 
+        [SerializeField]
+        private BoosterTradingWindow _boosterTradingWindow;
+
+
 
         public override void InstallBindings()
         {
             BindBoosterShopViewModel();
             BindPlayerBoosterInteractionWindow();
+            BindTradingSystem();
+        }
+
+        private void BindTradingSystem()
+        {
+            Container.Bind<TradingViewFactory>().FromNew().AsSingle();
+            Container.Bind<BoosterTradingSystem>().FromNew().AsSingle();
+            Container.Bind<BoosterTradingWindow>().FromInstance(_boosterTradingWindow).AsSingle();
         }
 
         private void BindPlayerBoosterInteractionWindow()

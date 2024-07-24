@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70efebccdf235db449925ea48bcdd412, type: 3}
+  m_Name: 50.50_Egg_Booster
+  m_EditorClassIdentifier: 
+  <Guid>k__BackingField: egg_booster
+  <Title>k__BackingField: "\u042F\u0439\u0446\u043E"
+  <Icon>k__BackingField: {fileID: 21300000, guid: ef74fa1ae83e13742b2bccede6380d37, type: 3}
+  <Value>k__BackingField: 50.5
+  <RareColor>k__BackingField: {r: 0.764151, g: 0, b: 0.5304106, a: 1}
